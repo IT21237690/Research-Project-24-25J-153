@@ -1,0 +1,1837 @@
+[
+  {
+    "passage_id": 1,
+    "passage": "Say 'Hello' to your friend. Listen and say: Hello! I'm Nisal. Ask and answer: I'm Sahan. What's your name?",
+    "difficulty": "easy",
+    "questions": [
+        {
+            "type": "mcq",
+            "question": "What should you say when you meet someone?",
+            "options": ["Goodbye", "Hello", "Yes", "No"],
+            "answer": "Hello",
+            "explanation": "The passage says to greet by saying 'Hello'."
+        },
+        {
+            "type": "short_answer",
+            "question": "What is your name?",
+            "answer": "[Your Name]",
+            "explanation": "The student should respond with their own name."
+        }
+      ]
+  },
+  {
+    "passage_id": 2,
+    "passage": "Stand in a circle. Take a ball. Throw the ball to a friend. Tell your name. Ask your friend's name. Tell your name.",
+    "difficulty": "easy",
+    "questions": [
+        {
+            "type": "mcq",
+            "question": "What should you do after throwing the ball?",
+            "options": ["Run away", "Tell your name", "Sit down", "Sing"],
+            "answer": "Tell your name",
+            "explanation": "The passage explains to tell your name after throwing the ball."
+        }
+    ]
+  },
+  {
+    "passage_id": 3,
+    "passage": "Count, read and say: one, two, three, four, five.",
+    "difficulty": "easy",
+    "questions": [
+        {
+            "type": "fill_in_the_blank",
+            "question": "Which number comes after three?",
+            "answer": "Four",
+            "explanation": "The number after three is four."
+        }
+    ]
+  },
+  {
+    "passage_id": 1,
+    "passage": "Say 'Hello' to your friend. Listen and say: Hello! I'm Nisal. Ask and answer: I'm Sahan. What's your name?",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What should you say when you meet someone?",
+        "options": ["Goodbye", "Hello", "Yes", "No"],
+        "answer": "Hello",
+        "explanation": "The passage says to greet by saying 'Hello'."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is your name?",
+        "answer": "[Your Name]",
+        "explanation": "The student should respond with their own name."
+      }
+    ]
+  },
+  {
+    "passage_id": 2,
+    "passage": "Stand in a circle. Take a ball. Throw the ball to a friend. Tell your name. Ask your friend's name.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What do you do after throwing the ball?",
+        "options": ["Run away", "Tell your name", "Sing", "Sit down"],
+        "answer": "Tell your name",
+        "explanation": "The passage instructs to tell your name after throwing the ball."
+      }
+    ]
+  },
+  {
+    "passage_id": 3,
+    "passage": "Count, read and say: one, two, three, four, five.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "fill_in_the_blank",
+        "question": "Which number comes after three?",
+        "answer": "Four",
+        "explanation": "The correct number after three is four."
+      }
+    ]
+  },
+  {
+    "passage_id": 4,
+    "passage": "This is my pet. It is a dog. This is my pet. It is a parrot.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What kind of pet is mentioned in the passage?",
+        "options": ["Cat", "Dog", "Elephant", "Lion"],
+        "answer": "Dog",
+        "explanation": "The passage mentions that the pet is a dog."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is your favorite pet?",
+        "answer": "[Your Pet]",
+        "explanation": "The student should provide their favorite pet."
+      }
+    ]
+  },
+  {
+    "passage_id": 5,
+    "passage": "Meet my family. This is my father. He is happy. This is my mother. She is happy.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Who is happy in the passage?",
+        "options": ["Father", "Brother", "Friend", "Neighbor"],
+        "answer": "Father",
+        "explanation": "The passage says the father is happy."
+      },
+      {
+        "type": "mcq",
+        "question": "Who else is happy in the passage?",
+        "options": ["Mother", "Aunt", "Uncle", "Teacher"],
+        "answer": "Mother",
+        "explanation": "The passage says the mother is happy."
+      }
+    ]
+  },
+  {
+    "passage_id": 6,
+    "passage": "I live in a nest. I live in a hive.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where does the bird live?",
+        "options": ["Burrow", "Nest", "Tree", "Water"],
+        "answer": "Nest",
+        "explanation": "The passage says the bird lives in a nest."
+      },
+      {
+        "type": "mcq",
+        "question": "Where does the bee live?",
+        "options": ["Nest", "Water", "Hive", "Tree"],
+        "answer": "Hive",
+        "explanation": "The passage says the bee lives in a hive."
+      }
+    ]
+  },
+  {
+    "passage_id": 7,
+    "passage": "My house has a door, a window, and a roof.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the house have?",
+        "options": ["A river", "A door", "A bridge", "A lake"],
+        "answer": "A door",
+        "explanation": "The passage mentions the house has a door."
+      },
+      {
+        "type": "fill_in_the_blank",
+        "question": "The house has a ________ and a roof.",
+        "answer": "Window",
+        "explanation": "The passage mentions the house has a window and a roof."
+      }
+    ]
+  },
+  {
+    "passage_id": 8,
+    "passage": "I have a blue hat. She has a yellow dress.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color is the hat?",
+        "options": ["Red", "Blue", "Green", "Yellow"],
+        "answer": "Blue",
+        "explanation": "The passage mentions the hat is blue."
+      },
+      {
+        "type": "mcq",
+        "question": "What color is the dress?",
+        "options": ["Yellow", "Blue", "Pink", "Red"],
+        "answer": "Yellow",
+        "explanation": "The passage mentions the dress is yellow."
+      }
+    ]
+  },
+  {
+    "passage_id": 9,
+    "passage": "This is my school. It has a playground, a library, and a music room.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the school have?",
+        "options": ["A river", "A playground", "A bridge", "A lake"],
+        "answer": "A playground",
+        "explanation": "The passage mentions the school has a playground."
+      },
+      {
+        "type": "mcq",
+        "question": "Where can you read books in the school?",
+        "options": ["Playground", "Music room", "Library", "Canteen"],
+        "answer": "Library",
+        "explanation": "The passage mentions the library for reading books."
+      }
+    ]
+  },
+  {
+    "passage_id": 10,
+    "passage": "My favorite food is rice and curry. I also like mangoes and ice cream.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the favorite food mentioned?",
+        "options": ["Pasta", "Rice and curry", "Bread", "Pizza"],
+        "answer": "Rice and curry",
+        "explanation": "The passage says the favorite food is rice and curry."
+      },
+      {
+        "type": "short_answer",
+        "question": "What other foods does the person like?",
+        "answer": "Mangoes and ice cream",
+        "explanation": "The passage mentions liking mangoes and ice cream."
+      }
+    ]
+  },
+  {
+    "passage_id": 11,
+    "passage": "Old MacDonald had a farm. E-I-E-I-O. And on that farm, he had a cow.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What animal did Old MacDonald have on his farm?",
+        "options": ["Dog", "Cat", "Cow", "Sheep"],
+        "answer": "Cow",
+        "explanation": "The passage mentions a cow on Old MacDonald’s farm."
+      }
+    ]
+  },
+  {
+    "passage_id": 12,
+    "passage": "I like to play football and cricket with my friends.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Which sports are mentioned in the passage?",
+        "options": ["Basketball", "Football and cricket", "Tennis", "Swimming"],
+        "answer": "Football and cricket",
+        "explanation": "The passage mentions football and cricket."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is your favorite sport?",
+        "answer": "[Your Sport]",
+        "explanation": "The student should respond with their favorite sport."
+      }
+    ]
+  },
+  {
+    "passage_id": 13,
+    "passage": "The lion was caught in a net, but the mouse bit the net and saved the lion.",
+    "difficulty": "medium",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What did the mouse do to help the lion?",
+        "options": ["Ran away", "Bit the net", "Cried", "Gave food"],
+        "answer": "Bit the net",
+        "explanation": "The passage says the mouse bit the net to save the lion."
+      },
+      {
+        "type": "short_answer",
+        "question": "Why did the lion need help?",
+        "answer": "The lion was caught in a net.",
+        "explanation": "The passage explains that the lion was trapped in a net."
+      }
+    ]
+  },
+  {
+    "passage_id": 14,
+    "passage": "I live in Matara. My friend lives in Colombo.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where does the speaker live?",
+        "options": ["Matara", "Colombo", "Kandy", "Galle"],
+        "answer": "Matara",
+        "explanation": "The passage mentions that the speaker lives in Matara."
+      },
+      {
+        "type": "mcq",
+        "question": "Where does the speaker's friend live?",
+        "options": ["Matara", "Colombo", "Kandy", "Galle"],
+        "answer": "Colombo",
+        "explanation": "The passage mentions that the speaker’s friend lives in Colombo."
+      }
+    ]
+  },
+  {
+    "passage_id": 15,
+    "passage": "I see a red apple, a blue bird, and a green leaf.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color is the apple?",
+        "options": ["Red", "Green", "Blue", "Yellow"],
+        "answer": "Red",
+        "explanation": "The passage says the apple is red."
+      },
+      {
+        "type": "mcq",
+        "question": "What color is the bird?",
+        "options": ["Red", "Green", "Blue", "Yellow"],
+        "answer": "Blue",
+        "explanation": "The passage says the bird is blue."
+      },
+      {
+        "type": "mcq",
+        "question": "What color is the leaf?",
+        "options": ["Red", "Green", "Blue", "Yellow"],
+        "answer": "Green",
+        "explanation": "The passage says the leaf is green."
+      }
+    ]
+  },
+  {
+    "passage_id": 16,
+    "passage": "It is raining outside. I wear my raincoat and take my umbrella.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What do you wear when it rains?",
+        "options": ["Raincoat", "Sunglasses", "Hat", "Scarf"],
+        "answer": "Raincoat",
+        "explanation": "The passage says to wear a raincoat when it rains."
+      },
+      {
+        "type": "mcq",
+        "question": "What else do you take when it rains?",
+        "options": ["Umbrella", "Bag", "Shoes", "Gloves"],
+        "answer": "Umbrella",
+        "explanation": "The passage mentions taking an umbrella when it rains."
+      }
+    ]
+  },
+  {
+    "passage_id": 17,
+    "passage": "My father drives a car. My mother rides a bicycle.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the father drive?",
+        "options": ["Car", "Bicycle", "Bus", "Train"],
+        "answer": "Car",
+        "explanation": "The passage mentions the father drives a car."
+      },
+      {
+        "type": "mcq",
+        "question": "What does the mother ride?",
+        "options": ["Bus", "Bicycle", "Car", "Motorcycle"],
+        "answer": "Bicycle",
+        "explanation": "The passage mentions the mother rides a bicycle."
+      }
+    ]
+  },
+  {
+    "passage_id": 18,
+    "passage": "We go to the beach in the summer. I like to build sandcastles and swim in the sea.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where do we go in the summer?",
+        "options": ["Mountains", "Beach", "Forest", "Park"],
+        "answer": "Beach",
+        "explanation": "The passage mentions going to the beach in the summer."
+      },
+      {
+        "type": "short_answer",
+        "question": "What do you like to do at the beach?",
+        "answer": "Build sandcastles and swim",
+        "explanation": "The passage mentions liking to build sandcastles and swim."
+      }
+    ]
+  },
+  {
+    "passage_id": 19,
+    "passage": "I have a red ball. It is my favorite toy.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color is the ball?",
+        "options": ["Blue", "Green", "Red", "Yellow"],
+        "answer": "Red",
+        "explanation": "The passage says the ball is red."
+      },
+      {
+        "type": "mcq",
+        "question": "What is the speaker's favorite toy?",
+        "options": ["Doll", "Car", "Ball", "Kite"],
+        "answer": "Ball",
+        "explanation": "The passage says the ball is the speaker’s favorite toy."
+      }
+    ]
+  },
+  {
+    "passage_id": 20,
+    "passage": "My sister is five years old. She likes to draw pictures.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "How old is the sister?",
+        "options": ["Three", "Five", "Six", "Seven"],
+        "answer": "Five",
+        "explanation": "The passage says the sister is five years old."
+      },
+      {
+        "type": "short_answer",
+        "question": "What does the sister like to do?",
+        "answer": "Draw pictures",
+        "explanation": "The passage says the sister likes to draw pictures."
+      }
+    ]
+  },
+  {
+    "passage_id": 21,
+    "passage": "I see a big elephant at the zoo. It has long tusks and a long trunk.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where does the speaker see the elephant?",
+        "options": ["Forest", "Park", "Zoo", "Garden"],
+        "answer": "Zoo",
+        "explanation": "The passage says the speaker sees the elephant at the zoo."
+      },
+      {
+        "type": "mcq",
+        "question": "What does the elephant have?",
+        "options": ["Short tusks", "Long tusks", "Wings", "Spots"],
+        "answer": "Long tusks",
+        "explanation": "The passage says the elephant has long tusks."
+      }
+    ]
+  },
+  {
+    "passage_id": 22,
+    "passage": "We visit our grandparents on Sunday. They live in a big house with a garden.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "When do we visit our grandparents?",
+        "options": ["Monday", "Wednesday", "Sunday", "Friday"],
+        "answer": "Sunday",
+        "explanation": "The passage says we visit our grandparents on Sunday."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where do the grandparents live?",
+        "answer": "In a big house with a garden",
+        "explanation": "The passage says the grandparents live in a big house with a garden."
+      }
+    ]
+  },
+  {
+    "passage_id": 23,
+    "passage": "We eat dinner together as a family. We have rice, vegetables, and fish.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What do we eat for dinner?",
+        "options": ["Pizza", "Rice, vegetables, and fish", "Pasta", "Burger"],
+        "answer": "Rice, vegetables, and fish",
+        "explanation": "The passage says we eat rice, vegetables, and fish for dinner."
+      },
+      {
+        "type": "short_answer",
+        "question": "Who eats dinner together?",
+        "answer": "The family",
+        "explanation": "The passage says the family eats dinner together."
+      }
+    ]
+  },
+  {
+    "passage_id": 24,
+    "passage": "The sun rises in the east and sets in the west.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where does the sun rise?",
+        "options": ["North", "East", "South", "West"],
+        "answer": "East",
+        "explanation": "The passage says the sun rises in the east."
+      },
+      {
+        "type": "mcq",
+        "question": "Where does the sun set?",
+        "options": ["North", "East", "South", "West"],
+        "answer": "West",
+        "explanation": "The passage says the sun sets in the west."
+      }
+    ]
+  },
+  {
+    "passage_id": 25,
+    "passage": "The cat is sitting on the mat. The dog is lying under the table.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the cat sitting?",
+        "options": ["On the chair", "On the mat", "On the bed", "On the sofa"],
+        "answer": "On the mat",
+        "explanation": "The passage says the cat is sitting on the mat."
+      },
+      {
+        "type": "mcq",
+        "question": "Where is the dog lying?",
+        "options": ["Under the table", "On the mat", "On the chair", "In the yard"],
+        "answer": "Under the table",
+        "explanation": "The passage says the dog is lying under the table."
+      }
+    ]
+  },
+  {
+    "passage_id": 26,
+    "passage": "I love reading books. My favorite book is about animals.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the speaker love doing?",
+        "options": ["Running", "Reading books", "Swimming", "Dancing"],
+        "answer": "Reading books",
+        "explanation": "The passage says the speaker loves reading books."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is the speaker's favorite book about?",
+        "answer": "Animals",
+        "explanation": "The passage says the speaker's favorite book is about animals."
+      }
+    ]
+  },
+  {
+    "passage_id": 27,
+    "passage": "We have breakfast at 7 o'clock in the morning. We eat bread, eggs, and drink milk.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What time do we have breakfast?",
+        "options": ["8 o'clock", "6 o'clock", "7 o'clock", "9 o'clock"],
+        "answer": "7 o'clock",
+        "explanation": "The passage says breakfast is at 7 o'clock."
+      },
+      {
+        "type": "mcq",
+        "question": "What do we drink with breakfast?",
+        "options": ["Juice", "Milk", "Water", "Tea"],
+        "answer": "Milk",
+        "explanation": "The passage says we drink milk with breakfast."
+      }
+    ]
+  },
+  {
+    "passage_id": 28,
+    "passage": "The teacher writes on the board. The students listen and take notes.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the teacher do?",
+        "options": ["Writes on the board", "Reads a book", "Plays music", "Draws a picture"],
+        "answer": "Writes on the board",
+        "explanation": "The passage says the teacher writes on the board."
+      },
+      {
+        "type": "mcq",
+        "question": "What do the students do?",
+        "options": ["Play outside", "Listen and take notes", "Sing", "Write on the board"],
+        "answer": "Listen and take notes",
+        "explanation": "The passage says the students listen and take notes."
+      }
+    ]
+  },
+  {
+    "passage_id": 29,
+    "passage": "We went to the park last Sunday. We played on the swings and had a picnic.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where did we go last Sunday?",
+        "options": ["Park", "Beach", "School", "Market"],
+        "answer": "Park",
+        "explanation": "The passage says we went to the park last Sunday."
+      },
+      {
+        "type": "short_answer",
+        "question": "What did we do at the park?",
+        "answer": "Played on the swings and had a picnic",
+        "explanation": "The passage says we played on the swings and had a picnic."
+      }
+    ]
+  },
+  {
+    "passage_id": 30,
+    "passage": "The moon shines at night. The stars twinkle in the sky.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "When does the moon shine?",
+        "options": ["In the morning", "At night", "In the afternoon", "In the evening"],
+        "answer": "At night",
+        "explanation": "The passage says the moon shines at night."
+      },
+      {
+        "type": "mcq",
+        "question": "What do the stars do in the sky?",
+        "options": ["Glow", "Twinkle", "Disappear", "Fall"],
+        "answer": "Twinkle",
+        "explanation": "The passage says the stars twinkle in the sky."
+      }
+    ]
+  },
+  {
+    "passage_id": 31,
+    "passage": "My friend is very kind. She always helps me with my homework.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the friend like?",
+        "options": ["Rude", "Kind", "Lazy", "Angry"],
+        "answer": "Kind",
+        "explanation": "The passage says the friend is kind."
+      },
+      {
+        "type": "short_answer",
+        "question": "How does the friend help the speaker?",
+        "answer": "Helps with homework",
+        "explanation": "The passage says the friend helps with homework."
+      }
+    ]
+  },
+  {
+    "passage_id": 32,
+    "passage": "The bus is yellow. It has four wheels and many seats.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color is the bus?",
+        "options": ["Red", "Blue", "Yellow", "Green"],
+        "answer": "Yellow",
+        "explanation": "The passage says the bus is yellow."
+      },
+      {
+        "type": "mcq",
+        "question": "How many wheels does the bus have?",
+        "options": ["Two", "Three", "Four", "Six"],
+        "answer": "Four",
+        "explanation": "The passage says the bus has four wheels."
+      }
+    ]
+  },
+  {
+    "passage_id": 33,
+    "passage": "The tree has green leaves and brown branches. Birds make their nests in the tree.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color are the leaves?",
+        "options": ["Green", "Brown", "Yellow", "Red"],
+        "answer": "Green",
+        "explanation": "The passage says the leaves are green."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where do the birds make their nests?",
+        "answer": "In the tree",
+        "explanation": "The passage says the birds make their nests in the tree."
+      }
+    ]
+  },
+  {
+    "passage_id": 34,
+    "passage": "It is a sunny day. We are going to the park to play football.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the weather like?",
+        "options": ["Rainy", "Windy", "Sunny", "Cloudy"],
+        "answer": "Sunny",
+        "explanation": "The passage says it is a sunny day."
+      },
+      {
+        "type": "mcq",
+        "question": "Where are they going?",
+        "options": ["Beach", "Market", "Park", "School"],
+        "answer": "Park",
+        "explanation": "The passage says they are going to the park."
+      }
+    ]
+  },
+  {
+    "passage_id": 35,
+    "passage": "The rabbit is fast, but the turtle is slow.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Which animal is fast?",
+        "options": ["Rabbit", "Turtle", "Bird", "Dog"],
+        "answer": "Rabbit",
+        "explanation": "The passage says the rabbit is fast."
+      },
+      {
+        "type": "mcq",
+        "question": "Which animal is slow?",
+        "options": ["Rabbit", "Turtle", "Horse", "Cat"],
+        "answer": "Turtle",
+        "explanation": "The passage says the turtle is slow."
+      }
+    ]
+  },
+  {
+    "passage_id": 36,
+    "passage": "The baby is sleeping in the crib. The mother is watching quietly.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the baby sleeping?",
+        "options": ["Bed", "Crib", "Sofa", "Chair"],
+        "answer": "Crib",
+        "explanation": "The passage says the baby is sleeping in the crib."
+      },
+      {
+        "type": "mcq",
+        "question": "What is the mother doing?",
+        "options": ["Sleeping", "Talking", "Watching", "Eating"],
+        "answer": "Watching",
+        "explanation": "The passage says the mother is watching quietly."
+      }
+    ]
+  },
+  {
+    "passage_id": 37,
+    "passage": "The butterfly has colorful wings. It flies from flower to flower.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What does the butterfly have?",
+        "options": ["Legs", "Wings", "Fins", "Claws"],
+        "answer": "Wings",
+        "explanation": "The passage says the butterfly has wings."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where does the butterfly fly?",
+        "answer": "From flower to flower",
+        "explanation": "The passage says the butterfly flies from flower to flower."
+      }
+    ]
+  },
+  {
+    "passage_id": 38,
+    "passage": "The train is coming to the station. We are waiting on the platform.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the train coming?",
+        "options": ["To the park", "To the station", "To the school", "To the market"],
+        "answer": "To the station",
+        "explanation": "The passage says the train is coming to the station."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where are we waiting?",
+        "answer": "On the platform",
+        "explanation": "The passage says we are waiting on the platform."
+      }
+    ]
+  },
+  {
+    "passage_id": 39,
+    "passage": "I have a pet fish. It swims in a bowl.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What kind of pet does the speaker have?",
+        "options": ["Dog", "Cat", "Fish", "Bird"],
+        "answer": "Fish",
+        "explanation": "The passage says the speaker has a pet fish."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where does the fish swim?",
+        "answer": "In a bowl",
+        "explanation": "The passage says the fish swims in a bowl."
+      }
+    ]
+  },
+  {
+    "passage_id": 40,
+    "passage": "My brother likes to play basketball. He practices every afternoon.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What sport does the brother like to play?",
+        "options": ["Football", "Basketball", "Tennis", "Cricket"],
+        "answer": "Basketball",
+        "explanation": "The passage says the brother likes to play basketball."
+      },
+      {
+        "type": "short_answer",
+        "question": "When does the brother practice?",
+        "answer": "Every afternoon",
+        "explanation": "The passage says the brother practices every afternoon."
+      }
+    ]
+  },
+  {
+    "passage_id": 41,
+    "passage": "It is winter, and the snow is falling. We are wearing warm coats and hats.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What season is it?",
+        "options": ["Summer", "Spring", "Winter", "Autumn"],
+        "answer": "Winter",
+        "explanation": "The passage says it is winter."
+      },
+      {
+        "type": "mcq",
+        "question": "What are they wearing?",
+        "options": ["T-shirts", "Shorts", "Warm coats and hats", "Sandals"],
+        "answer": "Warm coats and hats",
+        "explanation": "The passage says they are wearing warm coats and hats."
+      }
+    ]
+  },
+  {
+    "passage_id": 42,
+    "passage": "The frog jumped into the pond. It splashed the water everywhere.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where did the frog jump?",
+        "options": ["On the rock", "Into the pond", "Under the tree", "On the road"],
+        "answer": "Into the pond",
+        "explanation": "The passage says the frog jumped into the pond."
+      },
+      {
+        "type": "short_answer",
+        "question": "What happened when the frog jumped?",
+        "answer": "It splashed the water everywhere",
+        "explanation": "The passage says the frog splashed the water everywhere."
+      }
+    ]
+  },
+  {
+    "passage_id": 43,
+    "passage": "The kite flew high in the sky. The wind was strong.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where did the kite fly?",
+        "options": ["In the house", "In the sky", "In the garden", "In the car"],
+        "answer": "In the sky",
+        "explanation": "The passage says the kite flew high in the sky."
+      },
+      {
+        "type": "mcq",
+        "question": "What was the wind like?",
+        "options": ["Weak", "Strong", "Cold", "Warm"],
+        "answer": "Strong",
+        "explanation": "The passage says the wind was strong."
+      }
+    ]
+  },
+  {
+    "passage_id": 44,
+    "passage": "The sun is shining, and the birds are singing. It is a beautiful day.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the weather like?",
+        "options": ["Rainy", "Cloudy", "Sunny", "Windy"],
+        "answer": "Sunny",
+        "explanation": "The passage says the sun is shining, indicating that it is sunny."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are the birds doing?",
+        "answer": "Singing",
+        "explanation": "The passage says the birds are singing."
+      }
+    ]
+  },
+  {
+    "passage_id": 45,
+    "passage": "We are in the classroom. The teacher is teaching, and we are listening carefully.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are we?",
+        "options": ["Library", "Playground", "Classroom", "Canteen"],
+        "answer": "Classroom",
+        "explanation": "The passage says we are in the classroom."
+      },
+      {
+        "type": "mcq",
+        "question": "What are the students doing?",
+        "options": ["Talking", "Writing", "Listening carefully", "Drawing"],
+        "answer": "Listening carefully",
+        "explanation": "The passage says the students are listening carefully."
+      }
+    ]
+  },
+  {
+    "passage_id": 46,
+    "passage": "The monkey is climbing the tree. It jumps from branch to branch.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the monkey doing?",
+        "options": ["Running", "Climbing", "Sleeping", "Eating"],
+        "answer": "Climbing",
+        "explanation": "The passage says the monkey is climbing the tree."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where does the monkey jump?",
+        "answer": "From branch to branch",
+        "explanation": "The passage says the monkey jumps from branch to branch."
+      }
+    ]
+  },
+  {
+    "passage_id": 47,
+    "passage": "It is time for lunch. We are eating rice and curry.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What time is it?",
+        "options": ["Breakfast", "Dinner", "Lunch", "Snack"],
+        "answer": "Lunch",
+        "explanation": "The passage says it is time for lunch."
+      },
+      {
+        "type": "mcq",
+        "question": "What are we eating?",
+        "options": ["Pizza", "Rice and curry", "Bread", "Fruits"],
+        "answer": "Rice and curry",
+        "explanation": "The passage says we are eating rice and curry."
+      }
+    ]
+  },
+  {
+    "passage_id": 48,
+    "passage": "The garden has many flowers. The roses are red, and the sunflowers are yellow.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color are the roses?",
+        "options": ["Yellow", "Red", "Blue", "Pink"],
+        "answer": "Red",
+        "explanation": "The passage says the roses are red."
+      },
+      {
+        "type": "mcq",
+        "question": "What color are the sunflowers?",
+        "options": ["Blue", "Yellow", "Red", "White"],
+        "answer": "Yellow",
+        "explanation": "The passage says the sunflowers are yellow."
+      }
+    ]
+  },
+  {
+    "passage_id": 49,
+    "passage": "The airplane is flying high in the sky. The clouds are white and fluffy.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the airplane flying?",
+        "options": ["In the sky", "On the road", "In the park", "On the water"],
+        "answer": "In the sky",
+        "explanation": "The passage says the airplane is flying high in the sky."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are the clouds like?",
+        "answer": "White and fluffy",
+        "explanation": "The passage says the clouds are white and fluffy."
+      }
+    ]
+  },
+  {
+    "passage_id": 50,
+    "passage": "My dog is playing with a ball. It is running around the yard.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the dog playing with?",
+        "options": ["A stick", "A ball", "A toy", "A rope"],
+        "answer": "A ball",
+        "explanation": "The passage says the dog is playing with a ball."
+      },
+      {
+        "type": "mcq",
+        "question": "Where is the dog running?",
+        "options": ["In the house", "In the park", "Around the yard", "On the road"],
+        "answer": "Around the yard",
+        "explanation": "The passage says the dog is running around the yard."
+      }
+    ]
+  },
+  {
+    "passage_id": 51,
+    "passage": "The teacher gave us homework. We have to write a story about our favorite animal.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What did the teacher give the students?",
+        "options": ["Books", "Homework", "Games", "Snacks"],
+        "answer": "Homework",
+        "explanation": "The passage says the teacher gave the students homework."
+      },
+      {
+        "type": "short_answer",
+        "question": "What do the students have to write about?",
+        "answer": "Their favorite animal",
+        "explanation": "The passage says the students have to write a story about their favorite animal."
+      }
+    ]
+  },
+  {
+    "passage_id": 52,
+    "passage": "The clock says it is 5 o'clock. It is time to go home.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What time is it?",
+        "options": ["3 o'clock", "4 o'clock", "5 o'clock", "6 o'clock"],
+        "answer": "5 o'clock",
+        "explanation": "The passage says the clock says it is 5 o'clock."
+      },
+      {
+        "type": "mcq",
+        "question": "What is it time for?",
+        "options": ["Lunch", "To go home", "Playtime", "Class"],
+        "answer": "To go home",
+        "explanation": "The passage says it is time to go home."
+      }
+    ]
+  },
+  {
+    "passage_id": 53,
+    "passage": "The squirrel is eating a nut. It quickly runs up the tree.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the squirrel eating?",
+        "options": ["Fruit", "Nut", "Seed", "Leaf"],
+        "answer": "Nut",
+        "explanation": "The passage says the squirrel is eating a nut."
+      },
+      {
+        "type": "mcq",
+        "question": "Where does the squirrel run?",
+        "options": ["On the ground", "Up the tree", "Into a hole", "Under the table"],
+        "answer": "Up the tree",
+        "explanation": "The passage says the squirrel quickly runs up the tree."
+      }
+    ]
+  },
+  {
+    "passage_id": 54,
+    "passage": "My family and I went to the beach. We built sandcastles and swam in the sea.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where did the family go?",
+        "options": ["Beach", "Park", "Zoo", "Museum"],
+        "answer": "Beach",
+        "explanation": "The passage says the family went to the beach."
+      },
+      {
+        "type": "mcq",
+        "question": "What did they build at the beach?",
+        "options": ["Houses", "Sandcastles", "Boats", "Towers"],
+        "answer": "Sandcastles",
+        "explanation": "The passage says they built sandcastles at the beach."
+      }
+    ]
+  },
+  {
+    "passage_id": 55,
+    "passage": "The farmer has cows, goats, and chickens on his farm. He grows vegetables in the garden.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What animals does the farmer have?",
+        "options": ["Cows, goats, and chickens", "Sheep, horses, and cats", "Dogs, cats, and rabbits", "Fish, birds, and turtles"],
+        "answer": "Cows, goats, and chickens",
+        "explanation": "The passage says the farmer has cows, goats, and chickens on his farm."
+      },
+      {
+        "type": "short_answer",
+        "question": "What does the farmer grow in the garden?",
+        "answer": "Vegetables",
+        "explanation": "The passage says the farmer grows vegetables in the garden."
+      }
+    ]
+  },
+  {
+    "passage_id": 56,
+    "passage": "The wind is blowing, and the trees are swaying. The leaves are falling to the ground.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the wind doing?",
+        "options": ["Blowing", "Stopping", "Running", "Singing"],
+        "answer": "Blowing",
+        "explanation": "The passage says the wind is blowing."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are the leaves doing?",
+        "answer": "Falling to the ground",
+        "explanation": "The passage says the leaves are falling to the ground."
+      }
+    ]
+  },
+  {
+    "passage_id": 57,
+    "passage": "It is raining outside. We are staying inside the house and playing board games.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the weather like?",
+        "options": ["Sunny", "Windy", "Rainy", "Snowy"],
+        "answer": "Rainy",
+        "explanation": "The passage says it is raining outside."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are we doing inside the house?",
+        "answer": "Playing board games",
+        "explanation": "The passage says we are playing board games inside the house."
+      }
+    ]
+  },
+  {
+    "passage_id": 58,
+    "passage": "The lion roared loudly. The animals in the jungle ran away.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What did the lion do?",
+        "options": ["Ran", "Slept", "Roared", "Ate"],
+        "answer": "Roared",
+        "explanation": "The passage says the lion roared loudly."
+      },
+      {
+        "type": "short_answer",
+        "question": "What did the animals do after the lion roared?",
+        "answer": "Ran away",
+        "explanation": "The passage says the animals in the jungle ran away after the lion roared."
+      }
+    ]
+  },
+  {
+    "passage_id": 59,
+    "passage": "My sister is baking a cake in the kitchen. She is mixing flour, sugar, and eggs.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the sister doing?",
+        "options": ["Baking a cake", "Cleaning the room", "Reading a book", "Drawing a picture"],
+        "answer": "Baking a cake",
+        "explanation": "The passage says the sister is baking a cake."
+      },
+      {
+        "type": "short_answer",
+        "question": "What ingredients is she mixing?",
+        "answer": "Flour, sugar, and eggs",
+        "explanation": "The passage says she is mixing flour, sugar, and eggs."
+      }
+    ]
+  },
+  {
+    "passage_id": 60,
+    "passage": "The bus stopped at the bus stop. Many people got on the bus.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where did the bus stop?",
+        "options": ["At the park", "At the school", "At the bus stop", "At the mall"],
+        "answer": "At the bus stop",
+        "explanation": "The passage says the bus stopped at the bus stop."
+      },
+      {
+        "type": "mcq",
+        "question": "What did the people do?",
+        "options": ["Got off the bus", "Ran away", "Got on the bus", "Talked to the driver"],
+        "answer": "Got on the bus",
+        "explanation": "The passage says many people got on the bus."
+      }
+    ]
+  },
+  {
+    "passage_id": 61,
+    "passage": "The fish are swimming in the pond. The water is clear, and we can see the fish easily.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are the fish swimming?",
+        "options": ["In the river", "In the pond", "In the sea", "In the pool"],
+        "answer": "In the pond",
+        "explanation": "The passage says the fish are swimming in the pond."
+      },
+      {
+        "type": "short_answer",
+        "question": "Why can we see the fish easily?",
+        "answer": "Because the water is clear",
+        "explanation": "The passage says we can see the fish easily because the water is clear."
+      }
+    ]
+  },
+  {
+    "passage_id": 62,
+    "passage": "The stars are shining in the night sky. We are lying on the grass and looking at them.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "When are the stars shining?",
+        "options": ["In the morning", "In the afternoon", "At night", "At noon"],
+        "answer": "At night",
+        "explanation": "The passage says the stars are shining in the night sky."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are we doing while looking at the stars?",
+        "answer": "Lying on the grass",
+        "explanation": "The passage says we are lying on the grass and looking at the stars."
+      }
+    ]
+  },
+  {
+    "passage_id": 63,
+    "passage": "The sun is setting. The sky is turning orange, and the birds are flying home.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color is the sky as the sun sets?",
+        "options": ["Blue", "Green", "Orange", "Purple"],
+        "answer": "Orange",
+        "explanation": "The passage says the sky is turning orange as the sun sets."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are the birds doing?",
+        "answer": "Flying home",
+        "explanation": "The passage says the birds are flying home."
+      }
+    ]
+  },
+  {
+    "passage_id": 64,
+    "passage": "My mother is reading a book. She loves to read about history and science.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the mother doing?",
+        "options": ["Writing", "Cooking", "Reading a book", "Watching TV"],
+        "answer": "Reading a book",
+        "explanation": "The passage says the mother is reading a book."
+      },
+      {
+        "type": "short_answer",
+        "question": "What topics does the mother enjoy reading about?",
+        "answer": "History and science",
+        "explanation": "The passage says the mother loves to read about history and science."
+      }
+    ]
+  },
+  {
+    "passage_id": 65,
+    "passage": "The cat is sleeping under the table. It likes to sleep in quiet places.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the cat sleeping?",
+        "options": ["On the bed", "Under the table", "On the sofa", "In the garden"],
+        "answer": "Under the table",
+        "explanation": "The passage says the cat is sleeping under the table."
+      },
+      {
+        "type": "short_answer",
+        "question": "Where does the cat like to sleep?",
+        "answer": "In quiet places",
+        "explanation": "The passage says the cat likes to sleep in quiet places."
+      }
+    ]
+  },
+  {
+    "passage_id": 66,
+    "passage": "It is summer, and the weather is hot. We are eating ice cream to cool down.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What season is it?",
+        "options": ["Winter", "Summer", "Autumn", "Spring"],
+        "answer": "Summer",
+        "explanation": "The passage says it is summer."
+      },
+      {
+        "type": "mcq",
+        "question": "What are they eating to cool down?",
+        "options": ["Cake", "Ice cream", "Fruit", "Chocolate"],
+        "answer": "Ice cream",
+        "explanation": "The passage says they are eating ice cream to cool down."
+      }
+    ]
+  },
+  {
+    "passage_id": 67,
+    "passage": "The elephant is walking slowly in the jungle. It has large ears and a long trunk.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the elephant walking?",
+        "options": ["In the desert", "In the jungle", "On the road", "In the river"],
+        "answer": "In the jungle",
+        "explanation": "The passage says the elephant is walking slowly in the jungle."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are two features of the elephant mentioned in the passage?",
+        "answer": "Large ears and a long trunk",
+        "explanation": "The passage says the elephant has large ears and a long trunk."
+      }
+    ]
+  },
+  {
+    "passage_id": 68,
+    "passage": "The rain is falling, and the streets are wet. We are wearing raincoats and carrying umbrellas.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the weather like?",
+        "options": ["Sunny", "Rainy", "Snowy", "Windy"],
+        "answer": "Rainy",
+        "explanation": "The passage says the rain is falling."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are they wearing and carrying?",
+        "answer": "Raincoats and umbrellas",
+        "explanation": "The passage says they are wearing raincoats and carrying umbrellas."
+      }
+    ]
+  },
+  {
+    "passage_id": 69,
+    "passage": "The fish is swimming in the clear water. It has shiny scales and a long tail.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the fish swimming?",
+        "options": ["In a bowl", "In the sea", "In clear water", "In a pond"],
+        "answer": "In clear water",
+        "explanation": "The passage says the fish is swimming in the clear water."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are two features of the fish mentioned in the passage?",
+        "answer": "Shiny scales and a long tail",
+        "explanation": "The passage says the fish has shiny scales and a long tail."
+      }
+    ]
+  },
+  {
+    "passage_id": 70,
+    "passage": "We are having a picnic in the park. The grass is green, and the sky is blue.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are we having a picnic?",
+        "options": ["In the park", "On the beach", "In the garden", "At home"],
+        "answer": "In the park",
+        "explanation": "The passage says we are having a picnic in the park."
+      },
+      {
+        "type": "mcq",
+        "question": "What color is the sky?",
+        "options": ["Red", "Yellow", "Green", "Blue"],
+        "answer": "Blue",
+        "explanation": "The passage says the sky is blue."
+      }
+    ]
+  },
+  {
+    "passage_id": 71,
+    "passage": "The boy is riding his bicycle. He wears a helmet to stay safe.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the boy riding?",
+        "options": ["A horse", "A bicycle", "A car", "A bus"],
+        "answer": "A bicycle",
+        "explanation": "The passage says the boy is riding his bicycle."
+      },
+      {
+        "type": "mcq",
+        "question": "What does the boy wear to stay safe?",
+        "options": ["Hat", "Jacket", "Helmet", "Gloves"],
+        "answer": "Helmet",
+        "explanation": "The passage says the boy wears a helmet to stay safe."
+      }
+    ]
+  },
+  {
+    "passage_id": 72,
+    "passage": "The flowers in the garden are blooming. There are red, yellow, and white flowers.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are the flowers blooming?",
+        "options": ["In the house", "In the garden", "In the park", "In the forest"],
+        "answer": "In the garden",
+        "explanation": "The passage says the flowers are blooming in the garden."
+      },
+      {
+        "type": "short_answer",
+        "question": "What colors are the flowers?",
+        "answer": "Red, yellow, and white",
+        "explanation": "The passage says the flowers are red, yellow, and white."
+      }
+    ]
+  },
+  {
+    "passage_id": 73,
+    "passage": "The clock says it is 12 o’clock. It is time for lunch. We are having rice, vegetables, and fish.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What time is it?",
+        "options": ["10 o’clock", "11 o’clock", "12 o’clock", "1 o’clock"],
+        "answer": "12 o’clock",
+        "explanation": "The passage says the clock says it is 12 o’clock."
+      },
+      {
+        "type": "mcq",
+        "question": "What are they having for lunch?",
+        "options": ["Pasta", "Pizza", "Rice, vegetables, and fish", "Bread"],
+        "answer": "Rice, vegetables, and fish",
+        "explanation": "The passage says they are having rice, vegetables, and fish."
+      }
+    ]
+  },
+  {
+    "passage_id": 74,
+    "passage": "The dog is barking loudly in the yard. It sees a cat walking on the fence.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where is the dog barking?",
+        "options": ["In the house", "In the park", "In the yard", "In the street"],
+        "answer": "In the yard",
+        "explanation": "The passage says the dog is barking in the yard."
+      },
+      {
+        "type": "mcq",
+        "question": "What does the dog see?",
+        "options": ["A bird", "A car", "A cat", "A person"],
+        "answer": "A cat",
+        "explanation": "The passage says the dog sees a cat walking on the fence."
+      }
+    ]
+  },
+  {
+    "passage_id": 75,
+    "passage": "The teacher is writing on the blackboard. The students are reading their books and taking notes.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the teacher doing?",
+        "options": ["Writing on the blackboard", "Reading a book", "Singing", "Dancing"],
+        "answer": "Writing on the blackboard",
+        "explanation": "The passage says the teacher is writing on the blackboard."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are the students doing?",
+        "answer": "Reading their books and taking notes",
+        "explanation": "The passage says the students are reading their books and taking notes."
+      }
+    ]
+  },
+  {
+    "passage_id": 76,
+    "passage": "We are playing in the park. The swings are moving, and the children are laughing.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are they playing?",
+        "options": ["At home", "In the park", "In the garden", "At school"],
+        "answer": "In the park",
+        "explanation": "The passage says they are playing in the park."
+      },
+      {
+        "type": "mcq",
+        "question": "What are the swings doing?",
+        "options": ["Standing still", "Moving", "Breaking", "Falling"],
+        "answer": "Moving",
+        "explanation": "The passage says the swings are moving."
+      }
+    ]
+  },
+  {
+    "passage_id": 77,
+    "passage": "The stars are twinkling in the sky. The moon is shining brightly.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What are the stars doing?",
+        "options": ["Twinkling", "Falling", "Shining", "Disappearing"],
+        "answer": "Twinkling",
+        "explanation": "The passage says the stars are twinkling in the sky."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is the moon doing?",
+        "answer": "Shining brightly",
+        "explanation": "The passage says the moon is shining brightly."
+      }
+    ]
+  },
+  {
+    "passage_id": 78,
+    "passage": "The boy is playing with his toy car. It has red wheels and a blue body.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What is the boy playing with?",
+        "options": ["A ball", "A toy car", "A doll", "A kite"],
+        "answer": "A toy car",
+        "explanation": "The passage says the boy is playing with his toy car."
+      },
+      {
+        "type": "short_answer",
+        "question": "What color are the wheels of the toy car?",
+        "answer": "Red",
+        "explanation": "The passage says the wheels of the toy car are red."
+      }
+    ]
+  },
+  {
+    "passage_id": 79,
+    "passage": "The rain has stopped, and the sun is coming out. The grass is wet, and the flowers are sparkling with drops of water.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What has stopped?",
+        "options": ["The wind", "The snow", "The rain", "The thunder"],
+        "answer": "The rain",
+        "explanation": "The passage says the rain has stopped."
+      },
+      {
+        "type": "short_answer",
+        "question": "What is sparkling on the flowers?",
+        "answer": "Drops of water",
+        "explanation": "The passage says the flowers are sparkling with drops of water."
+      }
+    ]
+  },
+  {
+    "passage_id": 80,
+    "passage": "The children are drawing pictures in their notebooks. They are using crayons and colored pencils.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What are the children doing?",
+        "options": ["Drawing pictures", "Writing letters", "Playing a game", "Reading books"],
+        "answer": "Drawing pictures",
+        "explanation": "The passage says the children are drawing pictures in their notebooks."
+      },
+      {
+        "type": "short_answer",
+        "question": "What are they using to draw?",
+        "answer": "Crayons and colored pencils",
+        "explanation": "The passage says they are using crayons and colored pencils."
+      }
+    ]
+  },
+  {
+    "passage_id": 81,
+    "passage": "The fish are swimming in the pond. The water is clear, and we can see them very well.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "Where are the fish swimming?",
+        "options": ["In the sea", "In the river", "In the pond", "In the aquarium"],
+        "answer": "In the pond",
+        "explanation": "The passage says the fish are swimming in the pond."
+      },
+      {
+        "type": "short_answer",
+        "question": "Why can we see the fish very well?",
+        "answer": "Because the water is clear",
+        "explanation": "The passage says we can see the fish very well because the water is clear."
+      }
+    ]
+  },
+  {
+    "passage_id": 82,
+    "passage": "The tree has green leaves and brown branches. Birds make their nests in the tree.",
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "What color are the leaves on the tree?",
+        "options": ["Green", "Yellow", "Red", "Blue"],
+        "answer": "Green",
+        "explanation": "The passage says the leaves on the tree are green."
+      },
+      {
+        "type": "short_answer",
+        "question": "What do the birds make in the tree?",
+        "answer": "Nests",
+        "explanation": "The passage says the birds make their nests in the tree."
+      }
+    ]
+  },
+  {
+    "passage_id": 83,
+    "passage": null,
+    "no_passage": true,
+    "difficulty": "easy",
+    "questions": [
+      {
+        "type": "short_answer",
+        "question": "What is your name",
+        "answer": "[Your Name]",
+        "explanation": "The answer should be the student's name."
+      }
+    ]
+  },
+  {
+      "passage_id": 84,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "easy",
+      "questions": [
+        {
+          "type": "short_answer",
+          "question": "What grade are you in?",
+          "answer": "three",
+          "explanation": "I am in grade three"
+        }
+      ]
+    },
+    {
+      "passage_id": 85,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "easy",
+      "questions": [
+        {
+          "type": "short_answer",
+          "question": "Where do you live?",
+          "answer": "[Your Address]",
+          "explanation": "The answer should be the student's address."
+        }
+      ]
+    },
+    {
+      "passage_id": 86,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "medium",
+      "questions": [
+        {
+          "type": "reorder",
+          "question": "Write the sentence in the correct order: 'football Tom plays'",
+          "jumbled_sentence": "football Tom plays",
+          "answer": "Tom plays football",
+          "explanation": "The correct order is 'Tom plays football'. In English, sentences typically follow the Subject-Verb-Object order."
+        }
+      ]
+    },
+    {
+      "passage_id": 87,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "medium",
+      "questions": [
+        {
+          "type": "reorder",
+          "question": "Write the sentence in the correct order: 'my Raini is this friend'",
+          "jumbled_sentence": "my Raini is this friend",
+          "answer": "Raini is my friend",
+          "explanation": "The correct order is 'Raini is my friend'. In English, sentences typically follow the Subject-Verb-Object order."
+        }
+      ]
+    },
+    {
+      "passage_id": 88,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "easy",
+      "questions": [
+        {
+          "type": "short_answer",
+          "question": "How are you?",
+          "answer": "I am fine.",
+          "explanation": "The answer should reflect the student's current feelings."
+        }
+      ]
+    },
+    {
+      "passage_id": 89,
+      "passage": null,
+      "no_passage": true,
+      "difficulty": "medium",
+      "questions": [
+        {
+          "type": "hidden_word",
+          "question": "Find the hidden word: M y n a d o",
+          "answer": "Monday",
+          "explanation": "Rearrange the letters to form a day of the week."
+        },
+        {
+          "type": "hidden_word",
+          "question": "Find the hidden word: u s d T e a y",
+          "answer": "Tuesday",
+          "explanation": "Rearrange the letters to form a day of the week."
+        },
+        {
+          "type": "hidden_word",
+          "question": "Find the hidden word: n W e d s a y d e",
+          "answer": "Wednesday",
+          "explanation": "Rearrange the letters to form a day of the week."
+        },
+        {
+          "type": "hidden_word",
+          "question": "Find the hidden word: d h a u r s T y",
+          "answer": "Thursday",
+          "explanation": "Rearrange the letters to form a day of the week."
+        },
+        {
+          "type": "hidden_word",
+          "question": "Find the hidden word: F r d y a i",
+          "answer": "Friday",
+          "explanation": "Rearrange the letters to form a day of the week."
+        }
+      ]
+    }
+]
+  

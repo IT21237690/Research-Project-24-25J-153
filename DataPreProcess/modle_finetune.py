@@ -9,10 +9,9 @@ from transformers import (
     Wav2Vec2ForCTC, 
     TrainingArguments, 
     Trainer,
-    pipeline
+    pipeline,
+    DataCollator
 )
-from transformers import DataCollator
-
 
 class DataCollatorForWav2Vec2:
     def __init__(self, processor):
@@ -62,9 +61,6 @@ dataset = Dataset.from_pandas(paths_df)
 
 # Initialize Wav2Vec2 processor
 processor = Wav2Vec2Processor.from_pretrained(HUGGINGFACE_MODEL_NAME)
-
-# Preprocess function for Wav2Vec 2.0
-import torchaudio
 
 def preprocess(batch):
     try:

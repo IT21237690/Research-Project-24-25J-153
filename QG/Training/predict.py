@@ -17,13 +17,13 @@ def run_inference():
     config = T5Config.from_pretrained(model_name)
     model = CustomT5WithStyle(config, style_emb_size=32)
 
-    # If needed, load the pretrained T5 weights first (only if your custom model didn't already)
+
     # load_pretrained_t5_small_into_custom(model)
     model.resize_token_embeddings(len(tokenizer))
     # --------------------------------------------------
     # 2. Load the fine-tuned checkpoint
     # --------------------------------------------------
-    # Point to your saved model path
+
     saved_model_path = "/home/minidu-tissera/PycharmProjects/Research-Project/v11/QG/Models/custom_qg_model_finetiuned.pt"
     model.load_state_dict(torch.load(saved_model_path, map_location="cpu"))
     model.eval()
@@ -31,9 +31,7 @@ def run_inference():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
-    # --------------------------------------------------
-    # 3. Example Inference
-    # --------------------------------------------------
+
     passage = ("We watch movies together.")
 
     # SAQ example

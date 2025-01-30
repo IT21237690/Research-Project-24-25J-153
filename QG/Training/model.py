@@ -56,9 +56,7 @@ class CustomT5WithStyle(T5PreTrainedModel):
 
         self.init_weights()
 
-    #
-    # NOTE: These two methods are required so that .resize_token_embeddings() works.
-    #
+  
     def get_input_embeddings(self):
         return self.shared
 
@@ -91,7 +89,7 @@ class CustomT5WithStyle(T5PreTrainedModel):
             # Get pad_token_id and a special decoder_start_token_id from config
             pad_token_id = self.config.pad_token_id
             decoder_start_token_id = self.config.decoder_start_token_id
-            # If that doesn't exist, define your own, e.g. T5 uses 0 for start
+
 
             # shift tokens right
             decoder_input_ids = shift_tokens_right(labels, pad_token_id, decoder_start_token_id)
@@ -104,10 +102,10 @@ class CustomT5WithStyle(T5PreTrainedModel):
             encoder_attention_mask=attention_mask,
             return_dict=True
         )
-        seq_output = decoder_outputs.last_hidden_state  # (batch, tgt_len, d_model)
+        seq_output = decoder_outputs.last_hidden_state  
 
         # 3) Style embedding
-        style_vec = self.style_embeddings(style_ids)  # (batch, style_emb_size)
+        style_vec = self.style_embeddings(style_ids) 
 
         # Expand style_vec across the time dimension
         batch_size, tgt_len, _ = seq_output.shape
@@ -197,7 +195,7 @@ def shift_tokens_right(input_ids, pad_token_id, decoder_start_token_id):
     shifted_input_ids[:, 1:] = input_ids[:, :-1].clone()
     shifted_input_ids[:, 0] = decoder_start_token_id
 
-    # Replace any -100 (ignore_index) with pad_token_id
+
     shifted_input_ids = shifted_input_ids.masked_fill(
         shifted_input_ids == -100, pad_token_id
     )

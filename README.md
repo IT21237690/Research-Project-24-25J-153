@@ -1,7 +1,7 @@
 # Research-Project-24-25J-153
 # English Learning Assistant for Primary Students
 ## Overview
-This project is an AI-powered English learning assistant designed for Sri Lankan primary school students (under 11). It aligns with the Sri Lankan English curriculum and provides interactive learning experiences to improve pronunciation, fluency, and comprehension.
+This project is an English learning assistant tool(web app) designed for Sri Lankan primary school students (under 11). It aligns with the Sri Lankan English curriculum and provides interactive learning experiences to improve pronunciation, fluency, and comprehension.
 
 ## Features
 ### Fluency & Pronunciation Error Detection

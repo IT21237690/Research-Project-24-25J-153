@@ -9,7 +9,7 @@ Uses speech recognition models (e.g., wav2vec, Kaldi) to analyze pronunciation a
 Provides real-time feedback on spoken English.
 Question Generator & Answer Evaluation
 
-### Automatically generates questions based on curriculum topics.
+### questions and answer generator.
 Evaluates student responses using NLP techniques.
 Adaptive difficulty levels to personalize learning.
 

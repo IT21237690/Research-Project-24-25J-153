@@ -1,6 +1,3 @@
-########################
-# Part C (Dataset + Training)
-########################
 
 import json
 import os
@@ -13,10 +10,8 @@ from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 
-# If your model is in another file, import it:
-from model import CustomT5WithStyle, load_pretrained_t5_small_into_custom, freeze_encoder_layers
 
-# If you have the model code in the same file, you can remove the import above and paste it here.
+from model import CustomT5WithStyle, load_pretrained_t5_small_into_custom, freeze_encoder_layers
 
 class QGDataset(Dataset):
 
@@ -215,11 +210,11 @@ def plot_metrics(train_losses, val_losses, train_accuracies, val_accuracies, sav
 def main():
 
     ############## CONFIGURABLE PARAMETERS ##############
-    #  - Adjust to your liking or pass them as arguments
+
     BATCH_SIZE =  32
     NUM_EPOCHS = 50
     LEARNING_RATE = 5e-4
-    WEIGHT_DECAY = 1e-2  # Common values: 1e-2, 1e-3
+    WEIGHT_DECAY = 1e-2  
     MAX_GRAD_NORM = 1.0  # For gradient clipping
     PATIENCE = 10  # For early stopping
 

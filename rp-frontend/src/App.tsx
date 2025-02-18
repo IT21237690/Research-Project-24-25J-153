@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage.tsx";
 import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import React from "react";
+import Header from "./components/Header.tsx";
 
 function App() {
   return (

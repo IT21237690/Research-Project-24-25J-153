@@ -1,24 +1,26 @@
 /* Import Google Font */
-@import url("https://fonts.googleapis.com/css2?family=Literata:wght@700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Literata:wght@700&display=swap"); */
 
 /* Ensure full height layout */
-html,
-body,
-#root {
+/* html,
+body {
+  background-color: black;
+} */
+/* #root {
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0; */
   /* overflow: hidden; Prevent full-page scrolling */
-}
+/* } */
 /* Wrapper for page content */
-.page-container {
+/* .page-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh; /* Full height viewport */
-}
+  flex-direction: column; */
+  /* height: 100vh; Full height viewport */
+/* } */
 
 /* Fixed Header */
-.header {
+/* .header {
   background-color: #E7FBFF;
   color: #1a8dc8;
   padding: 1rem;
@@ -28,20 +30,20 @@ body,
   width: -webkit-fill-available;
   z-index: 10;
   height: 60px;
-}
+} */
 
 /* Body container */
-.body-container {
+/* .body-container { */
   /* flex-grow: 1; */
-  overflow-y: auto; 
-  margin-top: 60px; 
-  width: -webkit-fill-available;
-  height: 100%;
+  /* overflow-y: auto;  */
+  /* margin-top: 60px;  */
+  /* width: -webkit-fill-available; */
+  /* height: 100%; */
 
-}
+/* } */
 
 /* Header Container */
-.header-container {
+/* .header-container {
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -50,40 +52,42 @@ body,
   font-size: 1.1rem;
   font-family: "Literata", serif;
   display: flex;
-}
+} */
 
 /* Logo Styling */
-.logo img {
+/* .logo img {
   height: 40px;
-}
+} */
 
 /* Navigation */
-.nav-links {
+/* .nav-links {
   display: flex;
   gap: 1.5rem;
-}
+} */
 
-.nav-links a {
+/* .nav-links a {
   text-decoration: none;
   color: #1a8dc8;
   font-family: "Literata", serif;
   font-weight: 700;
   font-size: 1.1rem;
   transition: color 0.3s ease-in-out;
-}
+} */
 
-.nav-links a:hover {
+/* .nav-links a:hover {
   color: #e0e0e0;
-}
+} */
 
 /* Ensure content is pushed below the header */
-.content {
+/* .content {
   margin-top: 80px;
-}
+} */
 
-.leftImage {
+/* .leftImage {
     height:-webkit-fill-available ;
-    /* background-color: #1a8dc8; */
     left: 0%;
-}
+    width:-webkit-fill-available ;
+    margin-top: 60px;
+
+} */
 

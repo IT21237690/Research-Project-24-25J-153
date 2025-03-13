@@ -1,17 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage.tsx";
 import Login from "./pages/Login.tsx";
-import Register from "./pages/Register.tsx";
 import React from "react";
-import Header from "./components/Header.tsx";
+import FPAssesment from "./pages/FPAssessmentPage.tsx";
+import QnAAssessment from "./pages/QnAAssessmentPage.tsx";
+import StudentLandingPage from "./pages/StudentLandingPage.tsx";
+import AdminLandingPage from "./pages/AdminLandingPage.tsx";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register onRegister={undefined} />} />
+        <Route path="/adminLanding" element={<AdminLandingPage />} />
+        <Route path="/studentLanding" element={<StudentLandingPage/>} />
+        <Route path="/fluencyAssessment" element={<FPAssesment />} />
+        <Route path="/answerAssessment" element={<QnAAssessment />} />
       </Routes>
     </Router>
   );

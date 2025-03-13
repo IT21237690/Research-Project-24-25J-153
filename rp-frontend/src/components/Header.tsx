@@ -31,14 +31,12 @@
 
 // export default Header;
 
-
-
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#E7FBFF] text-[#1a8dc8] shadow-md z-50 h-16 flex items-center">
+    <header className="fixed top-0 left-0 w-full bg-[#E7FBFF] text-[#1a8dc8] drop-shadow-2xl rounded-b-lg z-50 h-16 flex items-center font-header text-2xl">
       <div className="container mx-auto flex justify-between items-center px-6">
         {/* Logo */}
         <div className="logo">
@@ -49,8 +47,12 @@ const Header = () => {
 
         {/* Navigation */}
         <nav className="flex space-x-6 font-semibold">
-          <Link to="/" className="hover:text-blue-500">Home</Link>
-          <Link to="/login" className="hover:text-blue-500">Login</Link>
+          <Link to="/studentLanding" className="hover:text-blue-500">
+            Home
+          </Link>
+          <Link to="/login" className="hover:text-blue-500">
+            Login
+          </Link>
         </nav>
       </div>
     </header>

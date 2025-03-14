@@ -3,7 +3,7 @@ version: "3.8"
 services:
   qg_service:
     build:
-      context: ./qg_service
+      context: ./QG_Service
       dockerfile: Dockerfile
     ports:
       - "8001:8001"
@@ -11,7 +11,7 @@ services:
 
   qa_service:
     build:
-      context: ./qa_service
+      context: ./QA_Service
       dockerfile: Dockerfile
     ports:
       - "8002:8002"
@@ -19,7 +19,7 @@ services:
 
   da_service:
     build:
-      context: ./da_service
+      context: ./DA_Service
       dockerfile: Dockerfile
     ports:
       - "8003:8003"

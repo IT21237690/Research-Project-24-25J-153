@@ -2,15 +2,15 @@ from transformers import pipeline
 from huggingface_hub import snapshot_download
 
 # Model directory
-MODEL_DIR = "/home/minidu-tissera/PycharmProjects/Research-Project/v11/QA/QA_Model"
+MODEL_DIR = "/app/QA_Model"
 
-# Download the model if not already present
-snapshot_download(
-    repo_id="deepset/roberta-base-squad2",
-    repo_type="model",
-    local_dir=MODEL_DIR,
-    local_dir_use_symlinks=False
-)
+# # Download the model if not already present
+# snapshot_download(
+#     repo_id="deepset/roberta-base-squad2",
+#     repo_type="model",
+#     local_dir=MODEL_DIR,
+#     local_dir_use_symlinks=False
+# )
 
 # Load the model with CPU enforcement
 qa_pipeline = pipeline("question-answering", model=MODEL_DIR, tokenizer=MODEL_DIR, device=-1)  # Force CPU

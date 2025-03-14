@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Qdrant Configuration
-QDRANT_HOST = "localhost"
+QDRANT_HOST = "research-project-qdrant-1"
 QDRANT_PORT = 6333
 COLLECTION_NAME = "passages_collection"
 

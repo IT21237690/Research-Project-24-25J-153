@@ -1,6 +1,11 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
+const QA = require('../models/QA');
+// const Pronunciation = require('../models/Pronunciation');
+// const Image = require('../models/Image');
+// const Text = require('../models/Text');
+
 // Get all users (Admin only)
 exports.getAllUsers = async (req, res) => {
     try {
@@ -63,3 +68,34 @@ exports.deleteUser = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
+exports.getUserResults = async (req, res) => {
+    try {
+        let user_id = req.user.id;
+
+        console.log("Extracted user_id from token:", user_id);
+        console.log("Type of user_id:", typeof user_id);
+
+        // DO NOT Convert user_id to ObjectId since it's stored as a string
+        const qaResults = await QA.find({ user_id: user_id });
+        // const pronunciationResults = await Pronunciation.find({ user_id: user_id });
+        // const imageResults = await Image.find({ user_id: user_id });
+        // const textResults = await Text.find({ user_id: user_id });
+
+        res.json({
+            user_id,
+            results: {
+                QA: qaResults,
+                // pronunciation: pronunciationResults,
+                // image: imageResults,
+                // text: textResults
+            }
+        });
+
+    } catch (err) {
+        console.error("Error in getUserResults:", err.message);
+        res.status(500).json({ error: err.message });
+    }
+};
+

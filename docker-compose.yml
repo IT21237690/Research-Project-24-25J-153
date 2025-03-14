@@ -1,30 +1,29 @@
 version: "3.8"
 
 services:
-  QG_Service:
+  qg_service:
     build:
-      context: ./QG_Service
+      context: ./qg_service
       dockerfile: Dockerfile
     ports:
       - "8001:8001"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8001
 
-  QA_Service:
+  qa_service:
     build:
-      context: ./QA_Service
+      context: ./qa_service
       dockerfile: Dockerfile
     ports:
       - "8002:8002"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8002
 
-  DA_Service:
+  da_service:
     build:
-      context: ./DA_Service
+      context: ./da_service
       dockerfile: Dockerfile
     ports:
       - "8003:8003"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8003
-
 
   csv_processor_service:
     build:
@@ -42,4 +41,4 @@ services:
       - qdrant_storage:/qdrant/storage
 
 volumes:
-    qdrant_storage:
+  qdrant_storage:

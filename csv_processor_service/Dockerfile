@@ -6,13 +6,14 @@ WORKDIR /app
 
 # Copy the files
 COPY requirements.txt .
-COPY app /app
+COPY app/ app/
+
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8004
 
 # Run FastAPI app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8004"]

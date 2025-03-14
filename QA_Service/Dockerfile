@@ -6,10 +6,10 @@ WORKDIR /app
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Copy the entire application
-COPY . .
+# Copy the application code AFTER installing dependencies
+COPY app/ app/
 
 # Expose the FastAPI default port
 EXPOSE 8002

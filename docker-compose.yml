@@ -1,6 +1,18 @@
 version: "3.8"
 
+networks:
+  app_network:
+
 services:
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    networks:
+      - app_network
+
   qg_service:
     build:
       context: ./QG_Service
@@ -8,6 +20,8 @@ services:
     ports:
       - "8001:8001"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+    networks:
+      - app_network
 
   qa_service:
     build:
@@ -16,6 +30,10 @@ services:
     ports:
       - "8002:8002"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8002
+    networks:
+      - app_network
+    volumes:
+      - /home/minidu-tissera/PycharmProjects/Research-Project/v11/QA/QA_Model:/app/QA_Model
 
   da_service:
     build:
@@ -24,6 +42,8 @@ services:
     ports:
       - "8003:8003"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8003
+    networks:
+      - app_network
 
   csv_processor_service:
     build:
@@ -32,13 +52,10 @@ services:
     ports:
       - "8004:8004"
     command: uvicorn app.main:app --host 0.0.0.0 --port 8004
+    networks:
+      - app_network
 
-  qdrant:
-    image: qdrant/qdrant
-    ports:
-      - "6333:6333"
-    volumes:
-      - qdrant_storage:/qdrant/storage
+
 
 volumes:
   qdrant_storage:

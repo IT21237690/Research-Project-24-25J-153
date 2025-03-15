@@ -12,3 +12,8 @@ class DifficultyResponse(BaseModel):
     reward: float
     predicted_adjustment: float
     updated_difficulty: float
+
+class PassageResponse(BaseModel):
+    passage: str
+    readability: float | None
+    grade: int

@@ -7,3 +7,4 @@ DATABASE_NAME = "rp_db"
 client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 results_collection = db["qa_results"]
+users_collection = db["users"]

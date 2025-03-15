@@ -37,11 +37,11 @@ exports.register = async (req, res) => {
 
 // Login user
 exports.login = async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     try {
         // Find user by email
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ username });
         if (!user) return res.status(400).json({ msg: "Invalid credentials" });
 
         // Check if password matches
@@ -63,7 +63,8 @@ exports.login = async (req, res) => {
             role: user.role,
             grade: user.grade,
             createdAt: user.createdAt,
-            updatedAt: user.updatedAt
+            updatedAt: user.updatedAt,
+            currentDifficulty: user.currentDifficulty
         };
 
         // Sign JWT token with HS256 algorithm

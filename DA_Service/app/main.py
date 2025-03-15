@@ -17,17 +17,22 @@ def root():
     return {"message": "Welcome to the Difficulty Adjustment API"}
 
 
-@app.post("/adjust_difficulty/{user_id}", response_model=DifficultyResponse)
-async def adjust_difficulty(user_id: str, payload: DifficultyRequest):
+@app.post("/adjust_difficulty/{user_id}/{grade}", response_model=DifficultyResponse)
+async def adjust_difficulty(user_id: str, grade: int, payload: DifficultyRequest):
     """
-    Handles the full pipeline: Retrieves passages, generates a question, evaluates the answer,
+    Handles the full pipeline: Retrieves passages based on difficulty and grade, generates a question, evaluates the answer,
     predicts difficulty adjustments, and saves the evaluation data to MongoDB.
+
+    Parameters:
+    - user_id: Unique identifier for the user.
+    - grade: Grade level to filter passages.
+    - payload: Contains the current difficulty and user_answer.
     """
     try:
-        # Retrieve passages matching difficulty
-        retrieved = retrieve_passages(payload.current_difficulty, top_k=1)  # Use only 1 passage
+        # Retrieve passages matching difficulty and grade
+        retrieved = retrieve_passages(payload.current_difficulty, grade, top_k=1)  # Use only 1 passage
         if not retrieved:
-            raise HTTPException(status_code=404, detail="No passages found for the given difficulty.")
+            raise HTTPException(status_code=404, detail="No passages found for the given difficulty and grade.")
 
         selected = retrieved[0]
         passage_text = selected.payload.get("passage", "")
@@ -57,7 +62,8 @@ async def adjust_difficulty(user_id: str, payload: DifficultyRequest):
             "similarity": similarity,
             "predicted_adjustment": predicted_adjustment,
             "updated_difficulty": new_difficulty,
-            "readability": readability
+            "readability": readability,
+            "grade": grade
         }
         results_collection.insert_one(record)
 

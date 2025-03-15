@@ -102,3 +102,46 @@ async def adjust_difficulty(user_id: str, grade: int, payload: DifficultyRequest
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/update_score/{final_fluency_score}/{current_flesch_score}")
+def update_score(final_fluency_score: str, current_flesch_score: str):
+    """
+    Computes an updated Flesch score based on the final fluency score and current Flesch score.
+
+    For a high fluency score, we want the updated score to be much closer to the challenging target,
+    and for a low fluency score, much closer to an easier target.
+
+    Parameters:
+      - current_flesch_score (float): The current Flesch Reading Ease score.
+      - final_fluency_score (float): The composite fluency score in [0, 1].
+
+    Returns:
+      - updated_score (float): The new Flesch score after adjustment.
+    """
+
+    # Convert string parameters to float
+    final_fluency_score = float(final_fluency_score)
+    current_flesch_score = float(current_flesch_score)
+    # Compute target Flesch: lower is more challenging, higher is easier.
+    target_flesch = 100 - (final_fluency_score * 50)
+
+    # Define a scaling factor that amplifies the weight.
+    # Here, we choose a factor (e.g., 2.5) so that for final_fluency_score=0.9,
+    # the weight on the target becomes 1.0, and for final_fluency_score=0.5 it’s 0.
+    # This means:
+    # - For final_fluency_score >= 0.5, weight_target scales as (final_fluency_score - 0.5)*2.5 (clipped to 1.0)
+    # - For final_fluency_score < 0.5, weight_target scales as (0.5 - final_fluency_score)*2.5 (clipped to 1.0)
+
+    if final_fluency_score >= 0.5:
+        weight_target = min(1.0, (final_fluency_score - 0.5) * 2.5)
+    else:
+        weight_target = min(1.0, (0.5 - final_fluency_score) * 2.5)
+
+    # Updated score blends current and target based on weight_target.
+    # When weight_target is 1, the updated score equals target_flesch.
+    updated_score = (current_flesch_score * (1 - weight_target)) + (target_flesch * weight_target)
+    return {"updated_score": updated_score}
+
+
+

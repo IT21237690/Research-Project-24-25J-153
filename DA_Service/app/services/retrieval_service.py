@@ -19,9 +19,9 @@ VECTOR_SIZE = embedder.get_sentence_embedding_dimension()
 # Initialize Qdrant Client
 qdrant_client = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT)
 
-def retrieve_passages(target_difficulty, top_k=5):
+def retrieve_passages(target_difficulty, grade, top_k=5):
     """
-    Retrieves passages from Qdrant based on target difficulty.
+    Retrieves passages from Qdrant based on target difficulty and grade.
     Logs the retrieved passages for debugging.
     """
     try:
@@ -30,6 +30,10 @@ def retrieve_passages(target_difficulty, top_k=5):
                 FieldCondition(
                     key="flesch_reading_ease",
                     range=Range(gte=target_difficulty - 10, lte=target_difficulty + 10)
+                ),
+                FieldCondition(
+                    key="grade",
+                    match={"value": grade}
                 )
             ]
         )
@@ -45,13 +49,13 @@ def retrieve_passages(target_difficulty, top_k=5):
 
         # Log the retrieved passages
         if search_result:
-            logging.info(f"Retrieved {len(search_result)} passages from Qdrant for difficulty {target_difficulty}:")
+            logging.info(f"Retrieved {len(search_result)} passages from Qdrant for difficulty {target_difficulty} and grade {grade}:")
             for idx, passage in enumerate(search_result):
                 passage_text = passage.payload.get("passage", "No passage found")
                 readability = passage.payload.get("flesch_reading_ease", "Unknown")
-                logging.info(f"Passage {idx + 1}: (Flesch Reading Ease: {readability}) {passage_text[:200]}...")  # Log first 200 chars
+                logging.info(f"Passage {idx + 1}: (Flesch Reading Ease: {readability}) {passage_text[:200]}...")
         else:
-            logging.warning(f"No passages found for difficulty {target_difficulty}.")
+            logging.warning(f"No passages found for difficulty {target_difficulty} and grade {grade}.")
 
         return search_result
 

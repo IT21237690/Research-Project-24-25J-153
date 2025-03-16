@@ -104,8 +104,8 @@ async def adjust_difficulty(user_id: str, grade: int, payload: DifficultyRequest
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/update_score/{final_fluency_score}/{current_flesch_score}")
-def update_score(final_fluency_score: str, current_flesch_score: str):
+@app.get("/update_score/{user_id}/{final_fluency_score}/{current_flesch_score}")
+def update_score(user_id: str,final_fluency_score: str, current_flesch_score: str):
     """
     Computes an updated Flesch score based on the final fluency score and current Flesch score.
 
@@ -141,6 +141,12 @@ def update_score(final_fluency_score: str, current_flesch_score: str):
     # Updated score blends current and target based on weight_target.
     # When weight_target is 1, the updated score equals target_flesch.
     updated_score = (current_flesch_score * (1 - weight_target)) + (target_flesch * weight_target)
+
+
+    users_collection.update_one(
+        {"_id": ObjectId(user_id)},
+        {"$set": {"fluencyDifficulty": updated_score}}
+    )
     return {"updated_score": updated_score}
 
 

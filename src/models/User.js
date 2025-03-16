@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
     role: { type: String, enum: ['student', 'teacher', 'admin'], default: 'student' },
     grade: { type: String, required: true },
     currentDifficulty: { type: Number, required: true, default: 100.0 },
+    fluencyDifficulty: { type: Number, required: true, default: 100.0 },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -64,7 +64,8 @@ exports.login = async (req, res) => {
             grade: user.grade,
             createdAt: user.createdAt,
             updatedAt: user.updatedAt,
-            currentDifficulty: user.currentDifficulty
+            currentDifficulty: user.currentDifficulty,
+            fluencyDifficulty: user.fluencyDifficulty
         };
 
         // Sign JWT token with HS256 algorithm

@@ -2,7 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
 const QA = require('../models/QA');
-// const Pronunciation = require('../models/Pronunciation');
+const Pronunciation = require('../models/Pronunciation');
 // const Image = require('../models/Image');
 // const Text = require('../models/Text');
 
@@ -79,7 +79,7 @@ exports.getUserResults = async (req, res) => {
 
         // DO NOT Convert user_id to ObjectId since it's stored as a string
         const qaResults = await QA.find({ user_id: user_id });
-        // const pronunciationResults = await Pronunciation.find({ user_id: user_id });
+        const pronunciationResults = await Pronunciation.find({ user_id: user_id });
         // const imageResults = await Image.find({ user_id: user_id });
         // const textResults = await Text.find({ user_id: user_id });
 
@@ -87,7 +87,7 @@ exports.getUserResults = async (req, res) => {
             user_id,
             results: {
                 QA: qaResults,
-                // pronunciation: pronunciationResults,
+                pronunciation: pronunciationResults,
                 // image: imageResults,
                 // text: textResults
             }

@@ -8,6 +8,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
+        'main-landing-background': "url('../public/assets/MainLandingbg.jpg')", 
         'login-background': "url('../public/assets/Loginbg.jpg')", 
         'student-landing-background': "url('../public/assets/StudentLandingbg.jpg')", 
         'admin-landing-background': "url('../public/assets/AdminLandingbg.jpg')", 

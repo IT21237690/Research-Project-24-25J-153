@@ -5,9 +5,9 @@ import pandas as pd
 from tqdm import tqdm
 
 # Define directories
-INPUT_DIR = "/home/bhagya-peramuna/PycharmProjects/Bhagya-Reserch/v3/Raw_data"
-OUTPUT_DIR = "/home/bhagya-peramuna/PycharmProjects/Bhagya-Reserch/v3/datasets/processed_audio"
-METADATA_CSV = "/home/bhagya-peramuna/PycharmProjects/Bhagya-Reserch/v3/datasets/metadata.csv"
+INPUT_DIR = "/home/minidu-tissera/PycharmProjects/Bhagya-Reserch/v3/Raw_data"
+OUTPUT_DIR = "/home/minidu-tissera/PycharmProjects/Bhagya-Reserch/v3/datasets/processed_audio"
+METADATA_CSV = "/home/minidu-tissera/PycharmProjects/Bhagya-Reserch/v3/datasets/metadata.csv"
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 

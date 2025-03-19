@@ -1,27 +1,16 @@
-import torch
-import torchaudio
-import pronouncing
-from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC
-from pyctcdecode import build_ctcdecoder
+import os
 import json
+import requests
 import pandas as pd
-import numpy as np
+import pronouncing
 from tqdm import tqdm
 
-from v3.datasetPreparation import METADATA_CSV
+# URL of the Gentle Forced Aligner running inside Docker
+GENTLE_API_URL = "http://localhost:8765/transcriptions?async=false"
 
-MODEL_NAME = "facebook/wav2vec2-base-960h"
-
-
-def load_models():
-    """Load Wav2Vec2 model and tokenizer"""
-    processor = Wav2Vec2Processor.from_pretrained(MODEL_NAME)
-    model = Wav2Vec2ForCTC.from_pretrained(MODEL_NAME)
-    vocab_dict = processor.tokenizer.get_vocab()
-    labels = [token for token, _ in sorted(vocab_dict.items(), key=lambda x: x[1])]
-
-    decoder = build_ctcdecoder(labels, kenlm_model_path=None)
-    return processor, model, decoder
+# Path to metadata CSV
+METADATA_CSV = "/home/minidu-tissera/PycharmProjects/Bhagya-Reserch/v3/datasets/metadata.csv"
+OUTPUT_CSV = "/home/minidu-tissera/PycharmProjects/Bhagya-Reserch/v3/datasets/alignment_results.csv"
 
 
 def get_phonemes(word):
@@ -30,26 +19,25 @@ def get_phonemes(word):
     Falls back to letter-based phonemes if the word is not in the dictionary.
     """
     phones = pronouncing.phones_for_word(word.lower())
-
     if phones:
-        return phones[0].split()  # Extract phonemes from CMU dictionary
+        return phones[0].split()  # Get first pronunciation
 
     # Fallback: Convert letters to pseudo-phonemes (A → A0, B → B0, etc.)
-    return [f"{letter.upper()}0" for letter in word]  # Example: 'cat' → ['C0', 'A0', 'T0']
+    return [f"{letter.upper()}0" for letter in word]
 
 
 def distribute_phoneme_timestamps(word_info, phonemes):
     """
-    Evenly distribute phoneme timestamps across the word duration.
+    Evenly distribute phoneme timestamps within the word's duration.
     """
-    start, end = word_info['start'], word_info['end']
+    start, end = word_info.get("start", 0), word_info.get("end", 0)
     duration = end - start
     num_phonemes = len(phonemes)
 
-    if num_phonemes == 0:
+    if num_phonemes == 0 or duration <= 0:
         return []
 
-    phoneme_duration = duration / num_phonemes
+    phoneme_duration = duration / num_phonemes  # Evenly distribute
 
     return [
         {"phoneme": phonemes[i], "start": start + i * phoneme_duration, "end": start + (i + 1) * phoneme_duration}
@@ -57,57 +45,77 @@ def distribute_phoneme_timestamps(word_info, phonemes):
     ]
 
 
-def process_audio(file_path, transcript, processor, model, decoder):
-    """Align phonemes and words with timestamps"""
-    waveform, sample_rate = torchaudio.load(file_path)
+def align_audio_gentle(audio_path, transcript):
+    """Send request to Gentle Forced Aligner and process the response."""
+    try:
+        files = {
+            'audio': open(audio_path, 'rb'),
+            'transcript': (None, transcript)  # Send transcript as text
+        }
 
-    if sample_rate != 16000:
-        waveform = torchaudio.transforms.Resample(sample_rate, 16000)(waveform)
+        # Send request to Gentle API
+        response = requests.post(GENTLE_API_URL, files=files)
+        response_data = response.json()
 
-    audio = waveform.squeeze().numpy()
-    inputs = processor(audio, sampling_rate=16000, return_tensors="pt", padding=True)
+        # Ensure response contains words
+        if "words" not in response_data:
+            print(f"⚠️ Warning: No words aligned for {audio_path}")
+            return {"word_alignment": [], "phoneme_alignment": []}
 
-    with torch.no_grad():
-        logits = model(**inputs).logits.cpu().numpy()[0]
+        # Process word alignment
+        word_alignment = []
+        phoneme_alignment = []
 
-    text = decoder.decode(logits)
-    alignment = decoder.decode_beams(logits, beam_width=5)[0]
+        for word_info in response_data["words"]:
+            if "alignedWord" not in word_info or "start" not in word_info or "end" not in word_info:
+                continue  # Skip misaligned words
 
-    word_alignment = [{"word": w, "start": s / 100, "end": e / 100} for w, (s, e) in alignment[2]]
+            word = word_info["alignedWord"]
+            word_alignment.append({
+                "word": word,
+                "start": word_info["start"],
+                "end": word_info["end"]
+            })
 
-    phoneme_alignment = []
-    for word_info in word_alignment:
-        phonemes = get_phonemes(word_info["word"])  # Extract phonemes for each word
-        phoneme_alignment.extend(distribute_phoneme_timestamps(word_info, phonemes))
+            # Get phonemes for the word
+            phonemes = get_phonemes(word)
+            phoneme_alignment.extend(distribute_phoneme_timestamps(word_info, phonemes))
 
-    return {
-        "decoded_text": text,
-        "word_alignment": word_alignment,
-        "phoneme_alignment": phoneme_alignment
-    }
+        return {
+            "word_alignment": word_alignment,
+            "phoneme_alignment": phoneme_alignment
+        }
+
+    except Exception as e:
+        print(f"❌ Error processing {audio_path}: {str(e)}")
+        return {"word_alignment": [], "phoneme_alignment": []}  # Return empty results
 
 
 def batch_process(metadata_csv, output_csv):
-    """Process all files in metadata"""
-    processor, model, decoder = load_models()
+    """Process all files using Gentle with a progress bar."""
     df = pd.read_csv(metadata_csv)
     results = []
 
-    for _, row in tqdm(df.iterrows(), total=len(df)):
-        try:
-            alignment = process_audio(row['processed_path'], row['text'], processor, model, decoder)
-            results.append({
-                "audio_path": row['processed_path'],
-                "word_alignment": json.dumps(alignment['word_alignment']),
-                "phoneme_alignment": json.dumps(alignment['phoneme_alignment']),
-                "text": alignment["decoded_text"]
-            })
-        except Exception as e:
-            print(f"Error processing {row['processed_path']}: {str(e)}")
+    with tqdm(total=len(df), desc="Processing Audio Files", unit="file") as progress_bar:
+        for _, row in df.iterrows():
+            try:
+                alignment = align_audio_gentle(row["processed_path"], row["text"])
 
+                results.append({
+                    "audio_path": row["processed_path"],
+                    "word_alignment": json.dumps(alignment["word_alignment"]),  # Store as JSON string
+                    "phoneme_alignment": json.dumps(alignment["phoneme_alignment"]),  # Store phoneme alignment
+                    "text": row["text"]  # Ensure transcript is saved
+                })
+            except Exception as e:
+                print(f"❌ Critical error processing {row['processed_path']}: {str(e)}")
+            finally:
+                progress_bar.update(1)
+
+    # ✅ Save results to CSV
     pd.DataFrame(results).to_csv(output_csv, index=False)
-    print(f"Alignment results saved to {output_csv}")
+    print(f"✅ Alignment results saved to {output_csv}")
 
 
 if __name__ == "__main__":
-    batch_process(METADATA_CSV, "/home/bhagya-peramuna/PycharmProjects/Bhagya-Reserch/v3/datasets/alignment_results.csv")
+    batch_process(METADATA_CSV, OUTPUT_CSV)

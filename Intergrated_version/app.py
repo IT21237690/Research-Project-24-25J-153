@@ -82,13 +82,45 @@ class ImageGrammarApp(ctk.CTk):
         
         self.similarity_btn = ctk.CTkButton(right_frame, text="Check Similarity", command=self.check_similarity)
         self.similarity_btn.pack(pady=5)
-        
-        self.feedback_label = ctk.CTkLabel(right_frame, text="", wraplength=380, justify="left", fg_color="transparent")
-        self.feedback_label.pack(pady=10)
-        
+
+        # New Highlighted Feedback Box
+        self.feedback_box = ctk.CTkTextbox(
+            right_frame, 
+            width=400, 
+            height=150, 
+            fg_color="#1e1e1e",  # Dark background
+            bg_color="transparent",  
+            text_color="white", 
+            wrap="word",
+            font=("Segoe UI Emoji", 14)  
+        )
+        self.feedback_box.pack(pady=10)
+
+        #  Adding an image to the right frame
+        right_img_path = "D:/SLIIT/Year 04/Research/UI/monster.png"  
+        right_image = Image.open(right_img_path)
+        right_image = right_image.resize((300, 300))  # Resize to fit
+        self.right_tk_image = ImageTk.PhotoImage(right_image)
+
+        self.right_image_label = ctk.CTkLabel(right_frame, image=self.right_tk_image, text="")
+        self.right_image_label.image = self.right_tk_image  # Keep reference to avoid garbage collection
+        self.right_image_label.pack(pady=10)
         self.status_label = ctk.CTkLabel(self, text="Ready", fg_color="#345bde")
         self.status_label.pack(side="bottom", pady=10)
-    
+
+        #  Adding an image to the left frame
+        left_img_path = "D:/SLIIT/Year 04/Research/UI/monstertwo.png"  
+        left_image = Image.open(left_img_path)
+        left_image = left_image.resize((150, 150))  # Resize to fit
+        self.left_tk_image = ImageTk.PhotoImage(left_image)
+
+        self.left_image_label = ctk.CTkLabel(left_frame, image=self.left_tk_image, text="")
+        self.left_image_label.image = self.left_tk_image  # Keep reference to avoid garbage collection
+        self.left_image_label.pack(pady=10)
+        #self.status_label = ctk.CTkLabel(self, text="Ready", fg_color="#345bde")
+        self.left_image_label.place(relx=0.0, rely=1.0, anchor="sw")  # 90% down from the top, adjust as needed
+
+
     def update_display(self):
         if len(self.prompts) > 0:
             self.prompt_label.configure(text="")
@@ -99,9 +131,8 @@ class ImageGrammarApp(ctk.CTk):
             return
 
         try:
-            
             self.desc_input.delete("1.0", "end-1c")
-            self.feedback_label.configure(text="")
+            self.feedback_box.delete("1.0", "end")
 
             prompt = random.choice(self.prompts)
             self.current_prompt = prompt
@@ -123,22 +154,28 @@ class ImageGrammarApp(ctk.CTk):
     def check_grammar(self):
         text = self.desc_input.get("1.0", "end-1c").strip()
         if not text:
-            self.feedback_label.configure(text="Please enter a description first!")
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", "Please enter a description first!")
             return
-        
+
         try:
             inputs = self.grammar_tokenizer(f"grammar: {text}", return_tensors="pt", max_length=128, truncation=True)
             outputs = self.grammar_model.generate(**inputs)
             feedback, _ = generate_feedback(text, self.grammar_tokenizer, self.grammar_model)
-            self.feedback_label.configure(text=feedback)
+
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", feedback)
+
             self.status_label.configure(text="Grammar check completed!")
         except Exception as e:
-            self.feedback_label.configure(text=f"Grammar check error: {str(e)}")
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", f"Grammar check error: {str(e)}")
     
     def check_similarity(self):
         text = self.desc_input.get("1.0", "end-1c").strip()
         if not text:
-            self.feedback_label.configure(text="Please enter a description first!")
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", "Please enter a description first!")
             return
         
         try:
@@ -147,28 +184,34 @@ class ImageGrammarApp(ctk.CTk):
             vectors = vectorizer.fit_transform([prompt, text])
             similarity_score = cosine_similarity(vectors[0], vectors[1])[0][0]
             self.similarity_scores.append(similarity_score)
+            
             feedback = f"Similarity Score: {similarity_score:.2f}\n\nOriginal: {prompt}\nYour Description: {text}"
-            self.feedback_label.configure(text=feedback)
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", feedback)
+
             self.status_label.configure(text="Similarity check completed!")
         except Exception as e:
-            self.feedback_label.configure(text=f"Similarity check error: {str(e)}")
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", f"Similarity check error: {str(e)}")
     
     def display_final_score(self):
         if self.similarity_scores:
             avg_score = sum(self.similarity_scores) / len(self.similarity_scores)
             feedback_text = f"Final Average Similarity Score: {avg_score:.2f}\n"
 
-            if avg_score > 0.8:
-                feedback_text += "Great job! Your description and grammar is highly accurate. Keep up the good work!"
-            elif avg_score > 0.5:
-                feedback_text += "Good effort! Try improving your grammar and object identification."
+            if avg_score > 0.5:
+                feedback_text += "Great job! 🔥🎯 Your description and grammar is highly accurate. Keep up the good work!"
+            elif avg_score > 0.3:
+                feedback_text += "Good effort ✨! Try improving your grammar and object identification."
             else:
-                feedback_text += "Needs improvement. Focus on spelling, punctuation, and describing objects clearly."
+                feedback_text += "Needs improvement‼️ . Focus on spelling, punctuation, and describing objects clearly."
             
-            self.feedback_label.configure(text=feedback_text)
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", feedback_text)
 
         else:
-            self.feedback_label.configure(text="No similarity scores to display.")
+            self.feedback_box.delete("1.0", "end")
+            self.feedback_box.insert("1.0", "No similarity scores to display.")
 
 if __name__ == '__main__':
     ctk.set_appearance_mode("dark")

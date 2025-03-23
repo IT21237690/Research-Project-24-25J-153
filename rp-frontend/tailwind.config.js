@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  safelist: [
+    'text-yellow-500',
+    'text-cyan-500',
+    'text-green-500',
+    'text-pink-500',
+  ],
   theme: {
     fontFamily: {
       header: ["Literata, serif"],

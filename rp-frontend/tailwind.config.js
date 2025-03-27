@@ -20,7 +20,7 @@ module.exports = {
         'admin-landing-background': "url('../public/assets/AdminLandingbg.jpg')", 
         'fp-background': "url('../public/assets/FPbg.jpg')", 
         'qa-background': "url('../public/assets/QAbg.jpg')", 
-
+        'student-profile-background': "url('../public/assets/StudentProfilebg.jpg')",
       },
     },
   },

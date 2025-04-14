@@ -136,21 +136,10 @@ class CustomT5WithStyle(T5PreTrainedModel):
             "logits": logits
         }
 
-    def custom_generate(
-
-        self,
-        input_ids,
-        attention_mask=None,
-        style_ids=None,
-        max_length=40,
-        num_beams=1,
+    def custom_generate(self,input_ids,attention_mask=None,style_ids=None,max_length=256,num_beams=1,
         pad_token_id=None,
         eos_token_id=None
     ):
-        """
-        A naive generation loop (greedy if num_beams=1).
-        For advanced decoding, you'd adapt HF's standard generate().
-        """
         if pad_token_id is None:
             pad_token_id = self.config.pad_token_id
         if eos_token_id is None:
@@ -172,7 +161,7 @@ class CustomT5WithStyle(T5PreTrainedModel):
                 decoder_input_ids=decoder_input_ids,
                 style_ids=style_ids
             )
-            logits = outputs["logits"]  # (batch, seq_len, vocab_size)
+            logits = outputs["logits"]
             next_token_logits = logits[:, -1, :]
             next_tokens = torch.argmax(next_token_logits, dim=-1)  # greedy
 
@@ -193,7 +182,6 @@ class CustomT5WithStyle(T5PreTrainedModel):
 def shift_tokens_right(input_ids, pad_token_id, decoder_start_token_id):
     """
     Shifts input_ids to the right, prepending the decoder_start_token_id.
-    Used for teacher forcing in T5.
     """
     shifted_input_ids = input_ids.new_zeros(input_ids.shape)
     shifted_input_ids[:, 1:] = input_ids[:, :-1].clone()
@@ -219,7 +207,6 @@ def load_pretrained_t5_small_into_custom(custom_model):
 def freeze_encoder_layers(model, num_layers_to_freeze=3):
     """
     Freeze the first `num_layers_to_freeze` blocks in the T5 encoder.
-    Useful if you have limited data and want to keep some pretrained knowledge intact.
     """
     all_blocks = model.encoder.block
     for i in range(min(num_layers_to_freeze, len(all_blocks))):

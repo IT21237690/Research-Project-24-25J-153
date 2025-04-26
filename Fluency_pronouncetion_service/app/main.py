@@ -141,12 +141,12 @@ async def analyze_speech(user_id: str,file: UploadFile = File(...), reference_te
             "Predicted Text": predicted_text,
             "WER": wer_score,
             "CER": cer_score,
-            "Pronunciation Score": pronunciation_score,
+            "pronunciationScore": pronunciation_score,
             "Speaking Rate (words/sec)": speaking_rate,
             "Average Pause Duration (sec)": avg_pause,
             "Abnormal Phones (approx)": abnormal_phones,
-            "Final Fluency Score": final_score,
-            "Mispronounced Words": mispronounced_words
+            "fluencyScore": final_score,
+            "mispronouncedWords": mispronounced_words
         }
 
     except Exception as e:

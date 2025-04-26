@@ -103,7 +103,7 @@ const AnswerContent = () => {
 
     try {
       const response = await fetch(
-        `        http://127.0.0.1:8003/adjust_difficulty/${userId}/${grade}`,
+        `http://127.0.0.1:8003/adjust_difficulty/${userId}/${grade}`,
         {
           method: "POST",
           headers: {

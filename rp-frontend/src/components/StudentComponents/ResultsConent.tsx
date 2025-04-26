@@ -10,6 +10,7 @@ const ResultContent = () => {
   const [qaData, setQaData] = useState([]);
   const [pronunciationData, setPronunciationData] = useState([]);
   const [loading, setLoading] = useState(true);
+  console.log("TOKEN PASED", token)
 
   useEffect(() => {
     const fetchResults = async () => {

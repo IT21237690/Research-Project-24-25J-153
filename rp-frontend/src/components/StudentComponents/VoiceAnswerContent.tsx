@@ -3,7 +3,7 @@ import { FaMicrophone } from "react-icons/fa";
 import GetStars from "./GetStars.tsx";
 import { useSound } from "../../context/Sound.context.tsx";
 import LoadingComponent from "./LoadingComponent.tsx";
-
+import Recorder from "recorder-js"
 const VoiceAnswerContent = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
@@ -13,47 +13,88 @@ const VoiceAnswerContent = () => {
   const [passage, setPassage] = useState<string>(
     localStorage.getItem("fnppassage") || "fnppassage"
   );
-  console.log(passage, "inside answer content");
+  // console.log(passage, "inside answer content");
   const [fluencyScore, setFluencyScore] = useState<number>(0);
   const [pronunciationScore, setPronunciationScore] = useState<number>(0);
   const [mispronouncedWords, setMispronouncedWords] = useState<string[]>([]);
-  // Start Recording
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const [recorderInstance, setRecorderInstance] = useState<Recorder | null>(null);
+
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = mediaRecorder;
 
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          audioChunksRef.current.push(event.data);
-        }
-      };
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      audioContextRef.current = new AudioContextClass();
+      const recorder = new Recorder(audioContextRef.current);
 
-      mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, {
-          type: "audio/wav", // Make sure the type is set to 'audio/wav'
-        });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        setAudioBlob(audioBlob);
-        setAudioUrl(audioUrl);
-        audioChunksRef.current = []; // Clear chunks
-      };
-
-      mediaRecorder.start();
+      await recorder.init(stream);
+      recorder.start();
+      setRecorderInstance(recorder);
       setIsRecording(true);
     } catch (error) {
       console.error("Error accessing microphone:", error);
     }
   };
 
-  // Stop Recording
-  const stopRecording = () => {
-    if (mediaRecorderRef.current && isRecording) {
-      mediaRecorderRef.current.stop();
+  const stopRecording = async () => {
+    if (recorderInstance && isRecording) {
+      const { blob } = await recorderInstance.stop();
+      // console.log("Recorded Blob:", blob);
+      const url = URL.createObjectURL(blob);
+      setAudioBlob(blob);
+      setAudioUrl(url);
       setIsRecording(false);
     }
   };
+
+  const sendAudio = async () => {
+    if (!audioBlob || !passage) {
+      alert("Please record the audio and provide the passage text.");
+      return;
+    }
+
+    // console.log("FILE TYPE", audioBlob.type); // Should log 'audio/wav'
+
+    if (audioBlob.type !== "audio/wav") {
+      alert("The file type is not supported. Please ensure you are recording in .wav format.");
+      return;
+    }
+
+    setIsLoading(true);
+    setResponse(null);
+
+    const formData = new FormData();
+    formData.append("file", audioBlob, "student-recording.wav");
+    formData.append("reference_text", passage);
+
+    // console.log(passage, "before analyze");
+
+    try {
+      const response = await fetch(`http://localhost:7000/${userId}/analyze`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setFluencyScore(data.fluencyScore);
+        setPronunciationScore(data.pronunciationScore);
+        setMispronouncedWords(data.mispronouncedWords);
+        console.log("Data Fluency Score:", data.fluencyScore);
+        setResponse(data);
+      } else {
+        console.error("Failed to send audio and passage. Status:", response.status);
+        setResponse("Sorry, something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending audio and passage:", error);
+      setResponse("Error sending audio. Please check your connection and try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState<string | null>(null);
   const difficulty = localStorage.getItem("fnpdifficultyScore") || "5"; // Default difficulty 5 if not found
@@ -73,57 +114,10 @@ const VoiceAnswerContent = () => {
       window.removeEventListener("passageUpdated", updatePassage);
     };
   }, []);
-  // Send the recorded audio and passage text to the API
-  const sendAudio = async () => {
-    // Ensure there is an audioBlob and a passage text
-    if (!audioBlob || !passage) {
-      alert("Please record the audio and provide the passage text.");
-      return;
-    }
-
-    // Show the loading state
-    setIsLoading(true);
-    setResponse(null); // Clear previous response messages
-
-    const formData = new FormData();
-    formData.append("file", audioBlob, "student-recording.wav"); // Attach the recorded audio as 'file'
-    formData.append("reference_text", passage); // Attach the passage text
-    console.log(passage, "before analyze");
-
-    try {
-      // Replace with your actual API endpoint
-      const response = await fetch(`http://localhost:7000/${userId}/analyze`, {
-        method: "POST",
-        body: formData,
-      });
-
-      // Check if the response is OK
-      if (response.ok) {
-        const data = await response.json();
-        // Extracting and setting state from the response data
-        setFluencyScore(data.final_fuency_score);
-        setPronunciationScore(data.pronunciation_score);
-        setMispronouncedWords(data.mispronounced_words);
-        console.log("data fluency", data.final_fuency_score);
-        setResponse(data);
-      } else {
-        console.error("Failed to send audio and passage.");
-        setResponse("Sorry, something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error sending audio and passage:", error);
-      setResponse(
-        "Error sending audio. Please check your connection and try again."
-      );
-    } finally {
-      // Hide the loading state
-      setIsLoading(false);
-    }
-  };
-  console.log("data setfluency", fluencyScore);
-
+ 
+  
   const updateScore = async (fluencyScore, difficulty, userId) => {
-    console.log("data use api fluency", fluencyScore);
+    // console.log("data use api fluency", fluencyScore);
 
     const url = `http://localhost:8003/update_score/${userId}/${fluencyScore}/${difficulty}`;
 

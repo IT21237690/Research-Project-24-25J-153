@@ -43,9 +43,8 @@ jobs:
       - name: Install dependencies for qg_service
         run: |
           cd qg_service
-          python -m venv venv
-          source venv/bin/activate
           pip install -r requirements.txt
+
 
       - name: Build Docker image for qg_service
         run: |

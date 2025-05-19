@@ -1,10 +1,10 @@
-name: Push Docker Images to Google Artifact Registry
+name: Build and Deploy Docker Images to Google VM
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Manual trigger
 
 jobs:
-  push-images:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,29 +17,55 @@ jobs:
         project_id: ${{ secrets.GCP_PROJECT }}
         credentials: ${{ secrets.GCP_SA_KEY }}
 
-    - name: Authenticate to Google Artifact Registry
-      run: gcloud auth configure-docker ${{ secrets.GCP_REGISTRY }}
+    - name: Authenticate to Google Cloud
+      run: gcloud auth activate-service-account --key-file="${{ secrets.GCP_SA_KEY }}"
 
-    - name: Build and Push Docker Image for Service 1
+    - name: Build Docker Image for Service 1
       run: |
-        cd csv_processor_service
-        docker build -t ${{ secrets.GCP_REGISTRY }}/csv_processor_service:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/csv_processor_service:latest
+        cd service1
+        docker build -t service1:latest .
+        docker save service1:latest | gzip > service1_latest.tar.gz
 
-    - name: Build and Push Docker Image for Service 2
+    - name: Build Docker Image for Service 2
       run: |
-        cd qg_service
-        docker build -t ${{ secrets.GCP_REGISTRY }}/qg_service:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/qg_service:latest
+        cd service2
+        docker build -t service2:latest .
+        docker save service2:latest | gzip > service2_latest.tar.gz
 
-    - name: Build and Push Docker Image for Service 3
+    - name: Build Docker Image for Service 3
       run: |
-        cd qa_service
-        docker build -t ${{ secrets.GCP_REGISTRY }}/service3:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/service3:latest
+        cd service3
+        docker build -t service3:latest .
+        docker save service3:latest | gzip > service3_latest.tar.gz
 
-    - name: Build and Push Docker Image for Service 4
+    - name: Build Docker Image for Service 4
       run: |
-        cd DA_Service
-        docker build -t ${{ secrets.GCP_REGISTRY }}/DA_Service:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/DA_Service:latest
+        cd service4
+        docker build -t service4:latest .
+        docker save service4:latest | gzip > service4_latest.tar.gz
+
+    - name: Copy Docker Images to Google Cloud VM
+      run: |
+        gcloud compute scp service1_latest.tar.gz service2_latest.tar.gz service3_latest.tar.gz service4_latest.tar.gz ${GCP_VM_USER}@${{ secrets.GCP_VM_IP }}:/home/${GCP_VM_USER} --zone ${GCP_VM_ZONE}
+
+    - name: SSH into GCP VM and Deploy Containers
+      run: |
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${GCP_VM_USER}@${{ secrets.GCP_VM_IP }} << 'EOF'
+          # Load Docker images from tar files
+          docker load < /home/${GCP_VM_USER}/service1_latest.tar.gz
+          docker load < /home/${GCP_VM_USER}/service2_latest.tar.gz
+          docker load < /home/${GCP_VM_USER}/service3_latest.tar.gz
+          docker load < /home/${GCP_VM_USER}/service4_latest.tar.gz
+
+          # Remove old containers if they exist
+          docker rm -f service1 || true
+          docker rm -f service2 || true
+          docker rm -f service3 || true
+          docker rm -f service4 || true
+
+          # Run new containers
+          docker run -d --name service1 -p 8001:8000 service1:latest
+          docker run -d --name service2 -p 8002:8000 service2:latest
+          docker run -d --name service3 -p 8003:8000 service3:latest
+          docker run -d --name service4 -p 8004:8000 service4:latest
+        EOF

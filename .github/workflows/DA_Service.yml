@@ -24,7 +24,7 @@ jobs:
       - name: Build Docker image for DA_Service
         run: |
           cd DA_Service
-          docker build -t ${{ secrets.ACR_REGISTRY_URL }}/DA_Service:latest .
+          docker build -t ${{ secrets.ACR_REGISTRY_URL }}/da_Service:latest .
 
       # Step 5: Log in to Azure Container Registry
       - name: Log in to Azure Container Registry

@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-requests
-qdrant-client
-sentence-transformers
-scikit-learn
-joblib
-pandas
-pymongo

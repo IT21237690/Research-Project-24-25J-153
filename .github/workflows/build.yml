@@ -22,24 +22,24 @@ jobs:
 
     - name: Build and Push Docker Image for Service 1
       run: |
-        cd service1
-        docker build -t ${{ secrets.GCP_REGISTRY }}/service1:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/service1:latest
+        cd csv_processor_service
+        docker build -t ${{ secrets.GCP_REGISTRY }}/csv_processor_service:latest .
+        docker push ${{ secrets.GCP_REGISTRY }}/csv_processor_service:latest
 
     - name: Build and Push Docker Image for Service 2
       run: |
-        cd service2
-        docker build -t ${{ secrets.GCP_REGISTRY }}/service2:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/service2:latest
+        cd qg_service
+        docker build -t ${{ secrets.GCP_REGISTRY }}/qg_service:latest .
+        docker push ${{ secrets.GCP_REGISTRY }}/qg_service:latest
 
     - name: Build and Push Docker Image for Service 3
       run: |
-        cd service3
+        cd qa_service
         docker build -t ${{ secrets.GCP_REGISTRY }}/service3:latest .
         docker push ${{ secrets.GCP_REGISTRY }}/service3:latest
 
     - name: Build and Push Docker Image for Service 4
       run: |
-        cd service4
-        docker build -t ${{ secrets.GCP_REGISTRY }}/service4:latest .
-        docker push ${{ secrets.GCP_REGISTRY }}/service4:latest
+        cd DA_Service
+        docker build -t ${{ secrets.GCP_REGISTRY }}/DA_Service:latest .
+        docker push ${{ secrets.GCP_REGISTRY }}/DA_Service:latest

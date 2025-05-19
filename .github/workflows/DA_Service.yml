@@ -34,4 +34,4 @@ jobs:
       # Step 6: Push Docker image for DA_Service to ACR
       - name: Push Docker image for DA_Service to ACR
         run: |
-          docker push ${{ secrets.ACR_REGISTRY_URL }}/DA_Service:latest
+          docker push ${{ secrets.ACR_REGISTRY_URL }}/da_Service:latest

@@ -64,7 +64,7 @@ jobs:
 
             # Run the Docker container for csv_processor_service
             docker run -d \
-              -p 8001:8001 \
+              -p 8000:8000 \
               --name csv_processor_service \
               ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
           EOF
@@ -81,7 +81,7 @@ jobs:
 
             # Run the Docker container for qg_service
             docker run -d \
-              -p 8002:8002 \
+              -p 8001:8001 \
               --name qg_service \
               ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
           EOF
@@ -98,7 +98,7 @@ jobs:
 
             # Run the Docker container for qa_service
             docker run -d \
-              -p 8003:8003 \
+              -p 8002:8002 \
               --name qa_service \
               ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
           EOF
@@ -115,7 +115,7 @@ jobs:
 
             # Run the Docker container for DA_Service
             docker run -d \
-              -p 8004:8004 \
+              -p 8003:8003 \
               --name DA_Service \
               ${{ secrets.ACR_REGISTRY_URL }}/DA_Service:latest
           EOF

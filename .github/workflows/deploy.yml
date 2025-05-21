@@ -16,7 +16,20 @@ jobs:
       - name: Set up SSH Agent
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.VM_KEY }}
+          ssh-private-key: ${{ secrets.VM_KEY }}  # This is now the base64 secret
+
+
+      # Step 3: Decode the base64-encoded PEM file and save it
+      - name: Decode PEM private key
+        run: |
+          echo "${{ secrets.VM_KEY_BASE64 }}" | base64 --decode > private-key.pem
+          chmod 600 private-key.pem  # Ensure only the user can read/write the private key
+
+      # Step 4: Set up SSH with the decoded private key
+      - name: Set up SSH with the decoded private key
+        run: |
+          eval "$(ssh-agent -s)"
+          ssh-add private-key.pem
 
       # Step 3: Install Qdrant on the Azure VM
       - name: Install and Run Qdrant using Docker

@@ -2,7 +2,7 @@ from transformers import pipeline
 from huggingface_hub import snapshot_download
 
 # Model directory
-MODEL_DIR = "/home/minidutissera/Desktop/PycharmProjects/Research-Project/v11/QA/QA_Model"
+MODEL_DIR = "/home/azureuser/QA_Model"
 
 # # Download the model if not already present
 # snapshot_download(

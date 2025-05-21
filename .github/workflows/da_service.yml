@@ -1,4 +1,4 @@
-name: Build Image for DA_Service
+name: Build Image for da_service
 
 on:
   workflow_dispatch:

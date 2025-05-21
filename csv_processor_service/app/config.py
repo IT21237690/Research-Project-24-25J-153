@@ -12,7 +12,7 @@ db = client[DATABASE_NAME]
 uploads_collection = db["files"]
 
 # Qdrant Configuration
-QDRANT_HOST = "localhost"
+QDRANT_HOST = "20.193.146.113"
 QDRANT_PORT = 6333
 COLLECTION_NAME = "passages_collection"
 VECTOR_SIZE = 384  # all-MiniLM-L6-v2 output size

@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-QA_SERVICE_URL = "http://localhost:8002/qa"
+QA_SERVICE_URL = "http://20.193.146.113:8002/qa"
 
 def evaluate_answer(user_answer, context, question):
     """

@@ -1,4 +1,4 @@
-name: Build and Push Docker Image for csv_processor_service to ACR
+name: Build Image for csv_processor_service
 
 on:
   workflow_dispatch:

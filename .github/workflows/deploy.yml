@@ -1,0 +1,121 @@
+name: Deploy Docker Images to VM
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up SSH Agent
+      - name: Set up SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.VM_KEY }}
+
+      # Step 3: Install Qdrant on the Azure VM
+      - name: Install and Run Qdrant using Docker
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Update system packages
+            sudo apt-get update -y
+
+            # Install Docker if not installed
+            if ! command -v docker &> /dev/null; then
+              sudo apt-get install -y docker.io
+              sudo systemctl start docker
+              sudo systemctl enable docker
+            fi
+
+            # Pull and run Qdrant Docker image
+            docker pull qdrant/qdrant:latest
+            docker run -d --name qdrant -p 6333:6333 qdrant/qdrant:latest
+          EOF
+
+      # Step 4: Install and run Gentle using Docker
+      - name: Install and Run Gentle using Docker
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Pull the latest Docker image for Gentle
+            docker pull lowerquality/gentle:latest
+
+            # Run Gentle in the background
+            docker run -d --name gentle -p 8765:8765 lowerquality/gentle:latest
+          EOF
+
+      # Step 5: Deploy Docker images for each service
+      - name: Deploy csv_processor_service to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Log in to Azure Container Registry
+            echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
+
+            # Pull the latest Docker image for csv_processor_service
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+
+            # Stop and remove existing container if running
+            docker stop csv_processor_service || true
+            docker rm csv_processor_service || true
+
+            # Run the Docker container for csv_processor_service
+            docker run -d \
+              -p 8001:8001 \
+              --name csv_processor_service \
+              ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+          EOF
+
+      - name: Deploy qg_service to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Pull the latest Docker image for qg_service
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
+
+            # Stop and remove existing container if running
+            docker stop qg_service || true
+            docker rm qg_service || true
+
+            # Run the Docker container for qg_service
+            docker run -d \
+              -p 8002:8002 \
+              --name qg_service \
+              ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
+          EOF
+
+      - name: Deploy qa_service to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Pull the latest Docker image for qa_service
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+
+            # Stop and remove existing container if running
+            docker stop qa_service || true
+            docker rm qa_service || true
+
+            # Run the Docker container for qa_service
+            docker run -d \
+              -p 8003:8003 \
+              --name qa_service \
+              ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+          EOF
+
+      - name: Deploy DA_Service to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Pull the latest Docker image for DA_Service
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/DA_Service:latest
+
+            # Stop and remove existing container if running
+            docker stop DA_Service || true
+            docker rm DA_Service || true
+
+            # Run the Docker container for DA_Service
+            docker run -d \
+              -p 8004:8004 \
+              --name DA_Service \
+              ${{ secrets.ACR_REGISTRY_URL }}/DA_Service:latest
+          EOF

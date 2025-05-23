@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+torch
+torchaudio
+librosa
+numpy
+requests
+transformers
+jiwer
+catboost
+joblib
+python-multipart
+noisereduce

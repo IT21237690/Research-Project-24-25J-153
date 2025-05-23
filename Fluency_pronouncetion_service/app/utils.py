@@ -9,7 +9,7 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 import noisereduce as nr  # Noise reduction
 
 
-MODEL_PATH = "models/whisper-finetuned-final"
+MODEL_PATH = "/home/azureuser/whisper-finetuned-final"
 processor = WhisperProcessor.from_pretrained(MODEL_PATH)
 asr_model = WhisperForConditionalGeneration.from_pretrained(MODEL_PATH)
 asr_model.eval()

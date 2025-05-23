@@ -19,7 +19,7 @@ FROM nginx:alpine
 # Copy the build output from the build stage to the Nginx html directory
 COPY --from=build /app/build /usr/share/nginx/html
 
-EXPOSE 5000
+EXPOSE 3000
 
 # Start Nginx to serve the app
 CMD ["nginx", "-g", "daemon off;"]

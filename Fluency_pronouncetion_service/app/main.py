@@ -33,10 +33,10 @@ app.add_middleware(
 # -----------------------
 # Load Models
 # -----------------------
-MODEL_PATH = "/home/azureuser/whisper-finetuned-final"
-SCORING_MODEL_PATH = "/home/azureuser/catboost_scoring_model.cbm"
-PROSODY_MODEL_PATH = "/home/azureuser/prosody_contrastive_model.pth"
-SCALER_PATH = "/home/azureuser/minmax_scaler.pkl"
+MODEL_PATH = "/host_data/whisper-finetuned-final"
+SCORING_MODEL_PATH = "/host_data/catboost_scoring_model.cbm"
+PROSODY_MODEL_PATH = "/host_data/prosody_contrastive_model.pth"
+SCALER_PATH = "/host_data/minmax_scaler.pkl"
 
 processor = WhisperProcessor.from_pretrained(MODEL_PATH)
 asr_model = WhisperForConditionalGeneration.from_pretrained(MODEL_PATH)

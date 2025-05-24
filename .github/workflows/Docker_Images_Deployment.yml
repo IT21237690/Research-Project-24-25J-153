@@ -2,6 +2,18 @@ name: Service_deployment
 
 on:
   workflow_dispatch:
+    inputs:
+      service_choice:
+        description: 'Select the service to deploy (or "all" to deploy all services)'
+        required: true
+        type: choice
+        options:
+          - csv_processor_service
+          - qg_service
+          - qa_service
+          - da_service
+          - fluency_service
+          - all  # Option to deploy all services
 
 jobs:
   setup_vm:
@@ -59,7 +71,7 @@ jobs:
     needs: setup_vm
     strategy:
       matrix:
-        service: [ csv_processor_service, qg_service, qa_service, da_service, fluency_service ]
+        service: ${{ fromJson(inputs.service_choice) == 'all' && '["csv_processor_service", "qg_service", "qa_service", "da_service", "fluency_service"]' || inputs.service_choice }}
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code

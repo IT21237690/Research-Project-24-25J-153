@@ -135,7 +135,7 @@ jobs:
           
               # Pull the latest Docker image for the service
               docker pull ${{ secrets.ACR_REGISTRY_URL }}/$service:latest
-
+          
               # Run the Docker container for the service with dynamic port and volume
               docker run -d -p $SERVICE_PORT:$SERVICE_PORT --name $service --network my_docker_network --restart always -v $SERVICE_VOLUME ${{ secrets.ACR_REGISTRY_URL }}/$service:latest
             EOF

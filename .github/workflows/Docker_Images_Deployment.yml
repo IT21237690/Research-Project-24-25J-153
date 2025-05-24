@@ -1,4 +1,4 @@
-name: Deploy Docker Images to VM
+name: ums_deployment
 
 on:
   workflow_dispatch:

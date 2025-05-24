@@ -1,0 +1,39 @@
+name: Deploy Docker Image to VM
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up SSH Agent
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.VM_KEY }}
+
+      - name: Deploy to Azure VM
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            # Login to Azure Container Registry
+            echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
+
+            # Pull the latest Docker image from ACR
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/user_managemnet_service:latest
+
+            # Stop and remove existing container if running
+            docker stop node-container || true
+            docker rm node-container || true
+
+            # Run the Docker container with environment variables injected at runtime
+            docker run -d \
+              -p 5000:5000 \
+              --name node-container \
+              -e MONGO_URI='${{ secrets.MONGO_URI }}' \
+              -e JWT_SECRET='${{ secrets.JWT_SECRET }}' \
+              ${{ secrets.ACR_REGISTRY_URL }}/user_managemnet_service:latest
+          EOF

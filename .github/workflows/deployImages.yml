@@ -18,37 +18,25 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VM_KEY }}  # Directly using the secret
 
-      # Step 3: Install Qdrant and Gentle on the Azure VM
-      - name: Install and Run Qdrant and Gentle using Docker
+      # Step 3: Deploy csv_processor_service to Azure VM
+      - name: Deploy csv_processor_service to Azure VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
-            # Update system packages
-            sudo apt-get update -y
+            # Log in to Azure Container Registry
+            echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
 
-            # Install Docker if not installed
-            if ! command -v docker &> /dev/null; then
-              sudo apt-get install -y docker.io
-              sudo systemctl start docker
-              sudo systemctl enable docker
-            fi
+            # Remove old Docker image if it exists
+            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest || true
 
-            # Check if Qdrant is running, if yes, skip, else pull and run it
-            if docker ps --filter "name=qdrant" --filter "status=running" | grep -q qdrant; then
-              echo "Qdrant is already running, skipping start."
-            else
-              echo "Starting Qdrant..."
-              docker pull qdrant/qdrant:latest
-              docker run -d --name qdrant -p 6333:6333 qdrant/qdrant:latest
-            fi
+            # Pull the latest Docker image for csv_processor_service
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
 
-            # Check if Gentle is running, if yes, skip, else pull and run it
-            if docker ps --filter "name=gentle" --filter "status=running" | grep -q gentle; then
-              echo "Gentle is already running, skipping start."
-            else
-              echo "Starting Gentle..."
-              docker pull lowerquality/gentle:latest
-              docker run -d --name gentle -p 8765:8765 lowerquality/gentle:latest
-            fi
+            # Stop and remove the existing container if running
+            docker stop csv_processor_service || true
+            docker rm csv_processor_service || true
+
+            # Run the Docker container for csv_processor_service with restart policy
+            docker run -d -p 8000:8000 --name csv_processor_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
           EOF
 
   deploy_csv_processor_service:

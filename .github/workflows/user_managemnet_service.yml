@@ -1,4 +1,4 @@
-name: Build Image for user_managemnet_service
+name: Build Image for ums
 
 on:
   workflow_dispatch:

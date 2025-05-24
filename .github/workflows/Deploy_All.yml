@@ -1,4 +1,4 @@
-name: Service_deployment
+name: Deploy All Services
 
 on:
   workflow_dispatch:

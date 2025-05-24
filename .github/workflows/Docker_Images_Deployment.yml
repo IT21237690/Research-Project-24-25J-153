@@ -1,4 +1,4 @@
-name: ums_deployment
+name: Service_deployment
 
 on:
   workflow_dispatch:

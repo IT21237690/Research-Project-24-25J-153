@@ -45,8 +45,10 @@ jobs:
     - name: SSH into Azure VM and Deploy Docker Container
       run: |
         ssh -o StrictHostKeyChecking=no azureuser@${{ secrets.VM_HOST }} << EOF
+        # Remove old Docker image if it exists
+          docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest || true
           docker pull ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
           docker stop react-app || true
           docker rm react-app || true
-          docker run -d --name react-app -p 80:80 ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
+          docker run -d --name react-app --network my_docker_network --restart always -p 80:80 ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
         EOF

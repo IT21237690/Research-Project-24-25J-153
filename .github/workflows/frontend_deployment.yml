@@ -1,4 +1,4 @@
-name: CI/CD for React App
+name: Deployment for React App
 
 on:
   workflow_dispatch: 

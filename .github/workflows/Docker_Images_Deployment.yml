@@ -33,7 +33,7 @@ jobs:
       # Step 3: Install Qdrant and Gentle on the Azure VM
       - name: Install and Run Qdrant and Gentle using Docker
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
             # Update system packages
             sudo apt-get update -y
 
@@ -122,7 +122,7 @@ jobs:
           services="${{ steps.deploy_services.outputs.services }}"
           for service in $(echo $services | sed "s/,/ /g")
           do
-            ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+            ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
               # Log in to Azure Container Registry
               echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
           

@@ -125,17 +125,18 @@ jobs:
             ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
               # Log in to Azure Container Registry
               echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
-          
+      
               # Stop and remove the existing container if running
               docker stop $service || true
               docker rm $service || true
-          
+      
               # Remove old Docker image if it exists
               docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/$service:latest || true
-          
+      
               # Pull the latest Docker image for the service
               docker pull ${{ secrets.ACR_REGISTRY_URL }}/$service:latest
-          
+      
               # Run the Docker container for the service with dynamic port and volume
               docker run -d -p $SERVICE_PORT:$SERVICE_PORT --name $service --network my_docker_network --restart always -v $SERVICE_VOLUME ${{ secrets.ACR_REGISTRY_URL }}/$service:latest
+            EOF
           done

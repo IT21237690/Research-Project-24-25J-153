@@ -32,22 +32,22 @@ jobs:
               sudo systemctl enable docker
             fi
 
-            # Check if Qdrant is running, if not, pull and run it
-            if ! docker ps --filter "name=qdrant" --filter "status=running" | grep -q qdrant; then
-              echo "Qdrant is not running, starting Qdrant..."
+            # Check if Qdrant is running, if yes, skip, else pull and run it
+            if docker ps --filter "name=qdrant" --filter "status=running" | grep -q qdrant; then
+              echo "Qdrant is already running, skipping start."
+            else
+              echo "Starting Qdrant..."
               docker pull qdrant/qdrant:latest
               docker run -d --name qdrant -p 6333:6333 qdrant/qdrant:latest
-            else
-              echo "Qdrant is already running."
             fi
 
-            # Check if Gentle is running, if not, pull and run it
-            if ! docker ps --filter "name=gentle" --filter "status=running" | grep -q gentle; then
-              echo "Gentle is not running, starting Gentle..."
+            # Check if Gentle is running, if yes, skip, else pull and run it
+            if docker ps --filter "name=gentle" --filter "status=running" | grep -q gentle; then
+              echo "Gentle is already running, skipping start."
+            else
+              echo "Starting Gentle..."
               docker pull lowerquality/gentle:latest
               docker run -d --name gentle -p 8765:8765 lowerquality/gentle:latest
-            else
-              echo "Gentle is already running."
             fi
           EOF
 

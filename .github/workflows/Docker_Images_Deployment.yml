@@ -2,6 +2,17 @@ name: Service_deployment
 
 on:
   workflow_dispatch:
+    inputs:
+      service_choice:
+        description: 'Select the service to deploy'
+        required: true
+        type: choice
+        options:
+          - csv_processor_service
+          - qg_service
+          - qa_service
+          - da_service
+          - fluency_service
 
 jobs:
   setup_vm:
@@ -54,12 +65,9 @@ jobs:
             fi
           EOF
 
-  deploy_services:
+  deploy_service:
     runs-on: ubuntu-latest
     needs: setup_vm
-    strategy:
-      matrix:
-        service: [ csv_processor_service, qg_service, qa_service, da_service, fluency_service ]
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
@@ -71,43 +79,43 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VM_KEY }}
 
-      # Step 3: Set environment variables dynamically based on the matrix service
+      # Step 3: Set environment variables dynamically based on the selected service
       - name: Set service-specific environment variables
         run: |
-          if [[ "${{ matrix.service }}" == "csv_processor_service" ]]; then
+          if [[ "${{ github.event.inputs.service_choice }}" == "csv_processor_service" ]]; then
             echo "SERVICE_PORT=8000" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
-          elif [[ "${{ matrix.service }}" == "qg_service" ]]; then
+          elif [[ "${{ github.event.inputs.service_choice }}" == "qg_service" ]]; then
             echo "SERVICE_PORT=8001" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser/custom_qg_model_v4.pt:/app/custom_qg_model_v4.pt'" >> $GITHUB_ENV
-          elif [[ "${{ matrix.service }}" == "qa_service" ]]; then
+          elif [[ "${{ github.event.inputs.service_choice }}" == "qa_service" ]]; then
             echo "SERVICE_PORT=8002" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
-          elif [[ "${{ matrix.service }}" == "da_service" ]]; then
+          elif [[ "${{ github.event.inputs.service_choice }}" == "da_service" ]]; then
             echo "SERVICE_PORT=8003" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
-          elif [[ "${{ matrix.service }}" == "fluency_service" ]]; then
+          elif [[ "${{ github.event.inputs.service_choice }}" == "fluency_service" ]]; then
             echo "SERVICE_PORT=8004" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
           fi
 
-      # Step 4: Deploy each service to Azure VM
-      - name: Deploy ${{ matrix.service }} to Azure VM
+      # Step 4: Deploy the selected service to Azure VM
+      - name: Deploy ${{ github.event.inputs.service_choice }} to Azure VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
             # Log in to Azure Container Registry
             echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
           
             # Stop and remove the existing container if running
-            docker stop ${{ matrix.service }} || true
-            docker rm ${{ matrix.service }} || true
+            docker stop ${{ github.event.inputs.service_choice }} || true
+            docker rm ${{ github.event.inputs.service_choice }} || true
           
             # Remove old Docker image if it exists
-            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/${{ matrix.service }}:latest || true
+            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/${{ github.event.inputs.service_choice }}:latest || true
           
             # Pull the latest Docker image for the service
-            docker pull ${{ secrets.ACR_REGISTRY_URL }}/${{ matrix.service }}:latest
+            docker pull ${{ secrets.ACR_REGISTRY_URL }}/${{ github.event.inputs.service_choice }}:latest
 
-            # Run the Docker container for the service with dynamic port and volume
-            docker run -d -p $SERVICE_PORT:$SERVICE_PORT --name ${{ matrix.service }} --network my_docker_network --restart always -v $SERVICE_VOLUME ${{ secrets.ACR_REGISTRY_URL }}/${{ matrix.service }}:latest
+            # Run the Docker container for the selected service with dynamic port and volume
+            docker run -d -p $SERVICE_PORT:$SERVICE_PORT --name ${{ github.event.inputs.service_choice }} --network my_docker_network --restart always -v $SERVICE_VOLUME ${{ secrets.ACR_REGISTRY_URL }}/${{ github.event.inputs.service_choice }}:latest
           EOF

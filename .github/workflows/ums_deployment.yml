@@ -22,17 +22,22 @@ jobs:
             # Login to Azure Container Registry
             echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
 
+            # Remove old Docker image if it exists
+            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/user_managemnet_service:latest || true
+
             # Pull the latest Docker image from ACR
             docker pull ${{ secrets.ACR_REGISTRY_URL }}/user_managemnet_service:latest
 
             # Stop and remove existing container if running
-            docker stop node-container || true
-            docker rm node-container || true
+            docker stop user_managemnet_service || true
+            docker rm user_managemnet_service || true
 
             # Run the Docker container with environment variables injected at runtime
             docker run -d \
               -p 5000:5000 \
-              --name node-container \
+              --name user_managemnet_service \
+              --network my_docker_network \
+              --restart always \
               -e MONGO_URI='${{ secrets.MONGO_URI }}' \
               -e JWT_SECRET='${{ secrets.JWT_SECRET }}' \
               ${{ secrets.ACR_REGISTRY_URL }}/user_managemnet_service:latest

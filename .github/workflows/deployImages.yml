@@ -18,7 +18,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VM_KEY }}  # Directly using the secret
 
-       # Step 3: Install Qdrant and Gentle on the Azure VM
+      # Step 3: Install Qdrant and Gentle on the Azure VM
       - name: Install and Run Qdrant and Gentle using Docker
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
@@ -72,19 +72,19 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
             # Log in to Azure Container Registry
             echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
-  
+
             # Remove old Docker image if it exists
             docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest || true
-  
+
             # Pull the latest Docker image for csv_processor_service
             docker pull ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
-  
+
             # Stop and remove the existing container if running
             docker stop csv_processor_service || true
             docker rm csv_processor_service || true
-  
+
             # Run the Docker container for csv_processor_service with restart policy
-            docker run -d -p 8000:8000 --name csv_processor_service --restart always ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+            docker run -d -p 8000:8000 --name csv_processor_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
           EOF
           
   deploy_qg_service:
@@ -108,18 +108,18 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
             # Remove old Docker image if it exists
             docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest || true
-  
+
             # Pull the latest Docker image for qg_service
             docker pull ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
-  
+
             # Stop and remove the existing container if running
             docker stop qg_service || true
             docker rm qg_service || true
-  
-            # Run the Docker container for qg_service with restart policy
-            docker run -d -p 8001:8001 --name qg_service --restart always ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
-          EOF
 
+            # Mount the model directory and run the Docker container for qg_service with restart policy
+            docker run -d -p 8001:8001 --name qg_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
+          EOF
+          
   deploy_qa_service:
     runs-on: ubuntu-latest
     needs: setup_vm
@@ -141,16 +141,16 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
             # Remove old Docker image if it exists
             docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest || true
-  
+
             # Pull the latest Docker image for qa_service
             docker pull ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
-  
+
             # Stop and remove the existing container if running
             docker stop qa_service || true
             docker rm qa_service || true
-  
-            # Run the Docker container for qa_service with restart policy
-            docker run -d -p 8002:8002 --name qa_service --restart always ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+
+            # Mount the model directory and run the Docker container for qa_service with restart policy
+            docker run -d -p 8002:8002 --name qa_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
           EOF
 
   deploy_da_service:
@@ -168,20 +168,20 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.VM_KEY }}
 
-      # Step 3: Deploy DA_Service to Azure VM
+      # Step 3: Deploy da_service to Azure VM
       - name: Deploy da_service to Azure VM
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
             # Remove old Docker image if it exists
             docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest || true
-  
+
             # Pull the latest Docker image for da_service
             docker pull ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
-  
+
             # Stop and remove the existing container if running
             docker stop da_service || true
             docker rm da_service || true
-  
-            # Run the Docker container for da_service with restart policy
-            docker run -d -p 8003:8003 --name da_service --restart always ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
+
+            # Mount the model directory and run the Docker container for da_service with restart policy
+            docker run -d -p 8003:8003 --name da_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
           EOF

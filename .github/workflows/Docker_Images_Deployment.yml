@@ -120,7 +120,7 @@ jobs:
             docker rm qg_service || true
 
             # Mount the model directory and run the Docker container for qg_service with restart policy and network attachment
-            docker run -d -p 8001:8001 --name qg_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
+            docker run -d -p 8001:8001 --name qg_service --network my_docker_network --restart always -v /home/azureuser/custom_qg_model_v4.pt:/app/custom_qg_model_v4.pt ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
           EOF
           
   # deploy_qa_service:

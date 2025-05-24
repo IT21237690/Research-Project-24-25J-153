@@ -35,7 +35,7 @@ def extract_whisper_embeddings(audio_path):
 
     # # **Apply Noise Reduction**
     # waveform_np = waveform.squeeze().numpy()
-    # reduced_noise_waveform = nr.reduce_noise(y=waveform_np, sr=16000)  # ✅ Noise cancellation applied
+    # reduced_noise_waveform = nr.reduce_noise(y=waveform_np, sr=16000) 
 
     # Convert waveform to input features (log-mel spectrogram)
     inputs = processor(
@@ -80,7 +80,7 @@ def extract_prosody_features(audio_path):
 # Function to run forced alignment using Gentle Docker
 # -----------------------
 def run_gentle_alignment(audio_path, transcript):
-    url = "http://localhost:8765/transcriptions?async=false"
+    url = "http://20.193.146.113:8765/transcriptions?async=false"
 
     with open(audio_path, "rb") as audio_file:
         files = {"audio": audio_file}

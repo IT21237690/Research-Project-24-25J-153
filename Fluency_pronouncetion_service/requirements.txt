@@ -11,3 +11,4 @@ catboost
 joblib
 python-multipart
 noisereduce
+pymongo

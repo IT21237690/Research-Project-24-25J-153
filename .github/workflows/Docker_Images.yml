@@ -54,41 +54,41 @@ jobs:
             fi
           EOF
 
-  deploy_csv_processor_service:
-    runs-on: ubuntu-latest
-    needs: setup_vm
+  # deploy_csv_processor_service:
+  #   runs-on: ubuntu-latest
+  #   needs: setup_vm
 
-    steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+  #   steps:
+  #     # Step 1: Checkout the repository
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      # Step 2: Set up SSH Agent
-      - name: Set up SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.VM_KEY }}
+  #     # Step 2: Set up SSH Agent
+  #     - name: Set up SSH Agent
+  #       uses: webfactory/ssh-agent@v0.5.3
+  #       with:
+  #         ssh-private-key: ${{ secrets.VM_KEY }}
 
-      # Step 3: Deploy csv_processor_service to Azure VM
-      - name: Deploy csv_processor_service to Azure VM
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
-            # Log in to Azure Container Registry
-            echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
+  #     # Step 3: Deploy csv_processor_service to Azure VM
+  #     - name: Deploy csv_processor_service to Azure VM
+  #       run: |
+  #         ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+  #           # Log in to Azure Container Registry
+  #           echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_REGISTRY_URL }} --username ${{ secrets.ACR_USERNAME }} --password-stdin
 
-            # Remove old Docker image if it exists
-            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest || true
+  #           # Remove old Docker image if it exists
+  #           docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest || true
 
-            # Pull the latest Docker image for csv_processor_service
-            docker pull ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+  #           # Pull the latest Docker image for csv_processor_service
+  #           docker pull ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
 
-            # Stop and remove the existing container if running
-            docker stop csv_processor_service || true
-            docker rm csv_processor_service || true
+  #           # Stop and remove the existing container if running
+  #           docker stop csv_processor_service || true
+  #           docker rm csv_processor_service || true
 
-            # Run the Docker container for csv_processor_service with restart policy and network attachment
-            docker run -d -p 8000:8000 --name csv_processor_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
-          EOF
+  #           # Run the Docker container for csv_processor_service with restart policy and network attachment
+  #           docker run -d -p 8000:8000 --name csv_processor_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+  #         EOF
           
   deploy_qg_service:
     runs-on: ubuntu-latest
@@ -123,68 +123,68 @@ jobs:
             docker run -d -p 8001:8001 --name qg_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
           EOF
           
-  deploy_qa_service:
-    runs-on: ubuntu-latest
-    needs: setup_vm
+  # deploy_qa_service:
+  #   runs-on: ubuntu-latest
+  #   needs: setup_vm
 
-    steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+  #   steps:
+  #     # Step 1: Checkout the repository
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      # Step 2: Set up SSH Agent
-      - name: Set up SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.VM_KEY }}
+  #     # Step 2: Set up SSH Agent
+  #     - name: Set up SSH Agent
+  #       uses: webfactory/ssh-agent@v0.5.3
+  #       with:
+  #         ssh-private-key: ${{ secrets.VM_KEY }}
 
-      # Step 3: Deploy qa_service to Azure VM
-      - name: Deploy qa_service to Azure VM
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
-            # Remove old Docker image if it exists
-            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest || true
+  #     # Step 3: Deploy qa_service to Azure VM
+  #     - name: Deploy qa_service to Azure VM
+  #       run: |
+  #         ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+  #           # Remove old Docker image if it exists
+  #           docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest || true
 
-            # Pull the latest Docker image for qa_service
-            docker pull ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+  #           # Pull the latest Docker image for qa_service
+  #           docker pull ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
 
-            # Stop and remove the existing container if running
-            docker stop qa_service || true
-            docker rm qa_service || true
+  #           # Stop and remove the existing container if running
+  #           docker stop qa_service || true
+  #           docker rm qa_service || true
 
-            # Mount the model directory and run the Docker container for qa_service with restart policy and network attachment
-            docker run -d -p 8002:8002 --name qa_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
-          EOF
+  #           # Mount the model directory and run the Docker container for qa_service with restart policy and network attachment
+  #           docker run -d -p 8002:8002 --name qa_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+  #         EOF
 
-  deploy_da_service:
-    runs-on: ubuntu-latest
-    needs: setup_vm
+  # deploy_da_service:
+  #   runs-on: ubuntu-latest
+  #   needs: setup_vm
 
-    steps:
-      # Step 1: Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+  #   steps:
+  #     # Step 1: Checkout the repository
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
 
-      # Step 2: Set up SSH Agent
-      - name: Set up SSH Agent
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.VM_KEY }}
+  #     # Step 2: Set up SSH Agent
+  #     - name: Set up SSH Agent
+  #       uses: webfactory/ssh-agent@v0.5.3
+  #       with:
+  #         ssh-private-key: ${{ secrets.VM_KEY }}
 
-      # Step 3: Deploy da_service to Azure VM
-      - name: Deploy da_service to Azure VM
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
-            # Remove old Docker image if it exists
-            docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest || true
+  #     # Step 3: Deploy da_service to Azure VM
+  #     - name: Deploy da_service to Azure VM
+  #       run: |
+  #         ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+  #           # Remove old Docker image if it exists
+  #           docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest || true
 
-            # Pull the latest Docker image for da_service
-            docker pull ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
+  #           # Pull the latest Docker image for da_service
+  #           docker pull ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
 
-            # Stop and remove the existing container if running
-            docker stop da_service || true
-            docker rm da_service || true
+  #           # Stop and remove the existing container if running
+  #           docker stop da_service || true
+  #           docker rm da_service || true
 
-            # Mount the model directory and run the Docker container for da_service with restart policy and network attachment
-            docker run -d -p 8003:8003 --name da_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
-          EOF
+  #           # Mount the model directory and run the Docker container for da_service with restart policy and network attachment
+  #           docker run -d -p 8003:8003 --name da_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
+  #         EOF

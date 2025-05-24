@@ -32,13 +32,16 @@ jobs:
               sudo systemctl enable docker
             fi
 
+            # Create Docker network
+            docker network create my_docker_network
+
             # Check if Qdrant is running, if yes, skip, else pull and run it
             if docker ps --filter "name=qdrant" --filter "status=running" | grep -q qdrant; then
               echo "Qdrant is already running, skipping start."
             else
               echo "Starting Qdrant..."
               docker pull qdrant/qdrant:latest
-              docker run -d --name qdrant -p 6333:6333 qdrant/qdrant:latest
+              docker run -d --name qdrant --network my_docker_network --restart always -p 6333:6333 qdrant/qdrant:latest
             fi
 
             # Check if Gentle is running, if yes, skip, else pull and run it
@@ -47,7 +50,7 @@ jobs:
             else
               echo "Starting Gentle..."
               docker pull lowerquality/gentle:latest
-              docker run -d --name gentle -p 8765:8765 lowerquality/gentle:latest
+              docker run -d --name gentle --network my_docker_network --restart always -p 8765:8765 lowerquality/gentle:latest
             fi
           EOF
 
@@ -83,8 +86,8 @@ jobs:
             docker stop csv_processor_service || true
             docker rm csv_processor_service || true
 
-            # Run the Docker container for csv_processor_service with restart policy
-            docker run -d -p 8000:8000 --name csv_processor_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
+            # Run the Docker container for csv_processor_service with restart policy and network attachment
+            docker run -d -p 8000:8000 --name csv_processor_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/csv_processor_service:latest
           EOF
           
   deploy_qg_service:
@@ -116,8 +119,8 @@ jobs:
             docker stop qg_service || true
             docker rm qg_service || true
 
-            # Mount the model directory and run the Docker container for qg_service with restart policy
-            docker run -d -p 8001:8001 --name qg_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
+            # Mount the model directory and run the Docker container for qg_service with restart policy and network attachment
+            docker run -d -p 8001:8001 --name qg_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qg_service:latest
           EOF
           
   deploy_qa_service:
@@ -149,8 +152,8 @@ jobs:
             docker stop qa_service || true
             docker rm qa_service || true
 
-            # Mount the model directory and run the Docker container for qa_service with restart policy
-            docker run -d -p 8002:8002 --name qa_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
+            # Mount the model directory and run the Docker container for qa_service with restart policy and network attachment
+            docker run -d -p 8002:8002 --name qa_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/qa_service:latest
           EOF
 
   deploy_da_service:
@@ -182,6 +185,6 @@ jobs:
             docker stop da_service || true
             docker rm da_service || true
 
-            # Mount the model directory and run the Docker container for da_service with restart policy
-            docker run -d -p 8003:8003 --name da_service --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
+            # Mount the model directory and run the Docker container for da_service with restart policy and network attachment
+            docker run -d -p 8003:8003 --name da_service --network my_docker_network --restart always -v /home/azureuser:/host_data ${{ secrets.ACR_REGISTRY_URL }}/da_service:latest
           EOF

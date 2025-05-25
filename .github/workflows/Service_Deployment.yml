@@ -99,7 +99,7 @@ jobs:
             echo "SERVICE_PORT=8004" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.service_choice }}" == "img_gen_service" ]]; then
-            echo "SERVICE_PORT=7000" >> $GITHUB_ENV
+            echo "SERVICE_PORT=6000" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser/imgModels:/host_data'" >> $GITHUB_ENV
           fi
 

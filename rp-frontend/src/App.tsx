@@ -9,6 +9,7 @@ import TeacherLandingPage from "./pages/TeacherLandingPage.tsx";
 import MainLanding from "./pages/MainLanding.tsx";
 import { SoundProvider } from "./context/Sound.context.tsx";
 import StudentProfile from "./pages/StudentProfile.tsx";
+import ImageDesc from "./pages/ImageDesc.jsx"; // Import your new page (App.js)
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/fluencyAssessment" element={<FPAssesment />} />
         <Route path="/answerAssessment" element={<QnAAssessment />} />
         <Route path="/studentProfile" element={<StudentProfile />} />
+        <Route path="/imageDesc" element={<ImageDesc />} />
 
       </Routes>
     </Router>

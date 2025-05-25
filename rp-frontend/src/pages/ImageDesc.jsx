@@ -138,7 +138,7 @@ const ResetMessage = styled.div`
   margin-top: 20px;
 `;
 
-const App = () => {
+const ImageDesc = () => {
   const [image, setImage] = useState(null);
   const [text, setText] = useState('');
   const [similarityScores, setSimilarityScores] = useState([]);  // Track similarity scores for each attempt
@@ -361,4 +361,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default ImageDesc;

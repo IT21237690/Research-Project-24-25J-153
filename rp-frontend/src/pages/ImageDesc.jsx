@@ -153,7 +153,7 @@ const ImageDesc = () => {
   const generateImage = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/generate-image');
+      const response = await axios.post('http://20.193.146.113:7000/generate-image');
       console.log("Generated Image Base64:", response.data.image);  // Log base64 for debugging
       setImage(response.data.image);  // base64 image string
       setSelectedPrompt(response.data.prompt);  // Store the selected prompt
@@ -174,7 +174,7 @@ const ImageDesc = () => {
   const checkGrammar = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/check-grammar', { text });
+      const response = await axios.post('http://20.193.146.113:7000/check-grammar', { text });
       setGrammarFeedback(response.data.feedback);
       setLoading(false);
     } catch (error) {
@@ -191,7 +191,7 @@ const ImageDesc = () => {
         return;
       }
 
-      const response = await axios.post('http://localhost:5000/check-similarity', { text, prompt: selectedPrompt });
+      const response = await axios.post('http://20.193.146.113:7000/check-similarity', { text, prompt: selectedPrompt });
       const similarityScore = response.data.similarity_score;
       setSimilarityScores([...similarityScores, similarityScore]);  // Accumulate similarity scores
       setSimilarityFeedback(response.data.feedback);
@@ -205,7 +205,7 @@ const ImageDesc = () => {
   const fetchFinalScore = () => {
     // Send similarity scores to the backend for final calculation
     if (similarityScores.length > 0) {
-      axios.post('http://localhost:5000/final-score', { similarity_scores: similarityScores })
+      axios.post('http://20.193.146.113:7000/final-score', { similarity_scores: similarityScores })
         .then((response) => {
           const finalScore = response.data.final_score;
           const feedback = response.data.feedback;

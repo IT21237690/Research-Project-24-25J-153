@@ -15,10 +15,10 @@ class ImageGenerator:
     def generate(self, prompt):
         with torch.autocast("cuda" if torch.cuda.is_available() else "cpu"):
             # Generate the image
-            generated_image = self.pipe(prompt, guidance_scale=10).images[0]
+            generated_image = self.pipe(prompt, guidance_scale=1).images[0]
             
             # Enhance sharpness
             enhancer = ImageEnhance.Sharpness(generated_image)
-            enhanced_image = enhancer.enhance(2.0)  # Increase sharpness
+            enhanced_image = enhancer.enhance(0.0)  # Increase sharpness
             
             return enhanced_image

@@ -21,8 +21,8 @@ from authtoken import auth_token
 image_gen = ImageGenerator(auth_token)
 
 try:
-    grammar_tokenizer = T5Tokenizer.from_pretrained("models/grammar_model")
-    grammar_model = T5ForConditionalGeneration.from_pretrained("models/grammar_model")
+    grammar_tokenizer = T5Tokenizer.from_pretrained("host_data/grammar_model")
+    grammar_model = T5ForConditionalGeneration.from_pretrained("host_data/grammar_model")
 except Exception as e:
     print(f"Error loading grammar model: {str(e)}")
     raise

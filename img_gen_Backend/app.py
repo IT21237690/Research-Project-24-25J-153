@@ -28,7 +28,8 @@ except Exception as e:
     raise
 
 # Load prompts
-csv_path = "D:\\SLIIT\\Year 04\\Research\\Datasets\\Dataset_Image_gen.csv"
+csv_path = "Dataset_Image_gen.csv" # Correct for Docker
+#csv_path = "D:\\SLIIT\\Year 04\\Research\\Datasets\\Dataset_Image_gen.csv"
 df = pd.read_csv(csv_path)
 prompts = df.iloc[:, 0].tolist()  # Assuming the prompts are in the first column
 

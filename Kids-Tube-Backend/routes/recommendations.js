@@ -5,7 +5,7 @@ const User = require("../models/user")
 const Video = require("../models/video")
 const youtubeService = require("../services/youtube-service")
 
-const ML_ENGINE_URL = "http://127.0.0.1:5001"
+const ML_ENGINE_URL = "http://20.193.146.113:5001"
 
 // Get recommendations for a user
 router.get("/:username", async (req, res) => {

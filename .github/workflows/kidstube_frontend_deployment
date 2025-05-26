@@ -23,7 +23,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest ./kidstube_fe
+        docker build -t ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest ./Kids-Tube-Frontend
 
     - name: Push Docker image to Azure Container Registry
       run: |

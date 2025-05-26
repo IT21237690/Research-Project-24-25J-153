@@ -1,4 +1,4 @@
-name: Deployment for KidsTube Frontend
+name: Deployment for KidsTube_Frontend
 
 on:
   workflow_dispatch: 

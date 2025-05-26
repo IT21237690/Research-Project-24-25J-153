@@ -22,7 +22,7 @@ const StudentLandingPage = () => {
   const handleRedirect = () => {
     const storedUsername = localStorage.getItem("username") || "Student"
     // Pass username as URL parameter
-    window.location.href = http://20.193.146.113:3000/?username=${encodeURIComponent(storedUsername)}
+    window.location.href = `http://20.193.146.113:3000/?username=${encodeURIComponent(storedUsername)}`;
   }
   return (
     <div className="flex flex-col h-screen transparent">

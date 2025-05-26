@@ -35,7 +35,7 @@ app.add_middleware(
 # -----------------------
 MODEL_PATH = "/host_data/whisper-finetuned-final"
 SCORING_MODEL_PATH = "/host_data/catboost_scoring_model.cbm"
-PROSODY_MODEL_PATH = "/host_data/prosody_contrastive_modelv2.pth"
+PROSODY_MODEL_PATH = "/host_data/prosody_contrastive_model.pth"
 SCALER_PATH = "/host_data/minmax_scaler.pkl"
 
 processor = WhisperProcessor.from_pretrained(MODEL_PATH)

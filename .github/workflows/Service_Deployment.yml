@@ -14,6 +14,7 @@ on:
           - da_service
           - fluency_service
           - img_gen_service
+          - kids_tube_be
 
 jobs:
   setup_vm:
@@ -101,6 +102,8 @@ jobs:
           elif [[ "${{ github.event.inputs.service_choice }}" == "img_gen_service" ]]; then
             echo "SERVICE_PORT=6000" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser/models:/app/models'" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.service_choice }}" == "kids_tube_be" ]]; then
+            echo "SERVICE_PORT=7000" >> $GITHUB_ENV
           fi
 
       # Step 4: Deploy the selected service to Azure VM

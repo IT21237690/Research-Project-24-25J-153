@@ -187,7 +187,7 @@ const ImageDesc = () => {
   const generateImage = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://20.193.146.113:6000/generate-image');
+      const response = await axios.post('http://img_gen_service:6000/generate-image');
       console.log("Generated Image Base64:", response.data.image);  // Log base64 for debugging
       setImage(response.data.image);  // base64 image string
       setSelectedPrompt(response.data.prompt);  // Store the selected prompt

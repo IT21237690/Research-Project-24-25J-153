@@ -1,0 +1,6 @@
+dotenv==0.9.9
+flask==3.1.0
+flask-cors==5.0.1
+flask-jwt-extended==4.7.1
+pymongo==4.11.2
+ultralytics==8.3.89

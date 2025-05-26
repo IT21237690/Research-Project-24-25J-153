@@ -162,6 +162,7 @@ const ImageDesc = () => {
       setText('');  // Clear the description text
       setGrammarFeedback('');  // Clear grammar feedback
       setSimilarityFeedback('');  // Clear similarity feedback
+      setSimilarityScores([]);  // Clear similarity scores
       setFinalScore(null);  // Reset final score
 
       setLoading(false);
@@ -340,7 +341,7 @@ const ImageDesc = () => {
             <>
               <h3>Similarity Score: <SimilarityScore>{(similarityScores[similarityScores.length - 1] * 100).toFixed(2)}%</SimilarityScore></h3>
               <p>{similarityFeedback}</p>
-              <p><strong>Prompt: </strong>{selectedPrompt}</p>
+              <p><strong>Expected Description: </strong>{selectedPrompt}</p>
               <p><strong>Your Description: </strong>{text}</p> {/* Added user's description */}
             </>
           )}

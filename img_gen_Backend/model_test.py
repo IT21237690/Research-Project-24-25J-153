@@ -3,8 +3,8 @@ import torch
 
 def load_model():
     try:
-        model = T5ForConditionalGeneration.from_pretrained("host_data/grammar_model")
-        tokenizer = T5Tokenizer.from_pretrained("host_data/grammar_model")
+        model = T5ForConditionalGeneration.from_pretrained("models/grammar_model")
+        tokenizer = T5Tokenizer.from_pretrained("models/grammar_model")
         print("✅ Model loaded successfully")
         return model, tokenizer
     except Exception as e:

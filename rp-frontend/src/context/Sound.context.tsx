@@ -1,20 +1,27 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-type SoundContextType = {
+interface SoundContextType {
   soundEnabled: boolean;
   toggleSound: () => void;
-};
+}
 
-const SoundContext = createContext<SoundContextType>({
-  soundEnabled: true,
-  toggleSound: () => {},
-});
+const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
-export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
-  const [soundEnabled, setSoundEnabled] = useState(true);
+export const SoundProvider = ({ children }) => {
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+
+  // On mount, read from localStorage
+  useEffect(() => {
+    const savedSound = localStorage.getItem("soundEnabled");
+    if (savedSound !== null) {
+      setSoundEnabled(savedSound === "true");
+    }
+  }, []);
 
   const toggleSound = () => {
-    setSoundEnabled((prev) => !prev);
+    const newSoundState = !soundEnabled;
+    setSoundEnabled(newSoundState);
+    localStorage.setItem("soundEnabled", newSoundState.toString());
   };
 
   return (
@@ -24,4 +31,10 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useSound = () => useContext(SoundContext);
+export const useSound = () => {
+  const context = useContext(SoundContext);
+  if (!context) {
+    throw new Error("useSound must be used within a SoundProvider");
+  }
+  return context;
+};

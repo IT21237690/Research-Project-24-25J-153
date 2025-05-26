@@ -6,12 +6,46 @@ import styled from 'styled-components';
 const AppContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-start;  /* Align the items to the top */
+  align-items: flex-start;
   min-height: 100vh;
-  background-color: #1b263b;  /* Dark background color */
+  background-color: #1b263b;
   color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+
+  /* First background image */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 80%;  /* Different position */
+    left: 92%;
+    transform: translate(-50%, -50%) rotate(-30deg); /* Negative rotation */
+    width: 500px;
+    height: 500px;
+    background-image: url(${process.env.PUBLIC_URL}/images/monster.png); /* Different image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* Second background image */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 76%;
+    left: 9%;
+    transform: translate(-50%, -50%) rotate(20deg);
+    width: 600px;
+    height: 600px;
+    background-image: url(${process.env.PUBLIC_URL}/images/monster2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+  }
 `;
 
 // Left Column Styling

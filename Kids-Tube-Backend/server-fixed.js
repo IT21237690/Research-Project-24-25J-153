@@ -10,7 +10,7 @@ const PORT = 7000;
 
 // Middleware
 app.use(cors({
-  origin: "http://20.193.146.113:3000", // Your frontend URL
+  origin: "http://20.193.146.113:3001", // Your frontend URL
   credentials: true
 }));
 app.use(express.json());

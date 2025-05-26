@@ -136,9 +136,9 @@ const StudentManagement = () => {
     "Grade",
     "Current Reading Difficulty",
     "Current Fluency Difficulty",
-    "Interests",
-    "Liked Videos",
-    "Watch History",
+    // "Interests",
+    // "Liked Videos",
+    // "Watch History",
     "User Created At",
   ];
 

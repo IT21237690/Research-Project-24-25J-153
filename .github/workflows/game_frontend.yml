@@ -50,5 +50,5 @@ jobs:
           docker pull ${{ secrets.ACR_REGISTRY_URL }}/game_frontend:latest
           docker stop game_frontend || true
           docker rm game_frontend || true
-          docker run -d --name kidstube_fe --network my_docker_network --restart always -p 3000:3000 ${{ secrets.ACR_REGISTRY_URL }}/game_frontend:latest
+          docker run -d --name kidstube_fe --network my_docker_network --restart always -p 3001:3001 ${{ secrets.ACR_REGISTRY_URL }}/game_frontend:latest
         EOF

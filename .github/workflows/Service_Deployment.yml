@@ -91,16 +91,16 @@ jobs:
             echo "SERVICE_VOLUME='/home/azureuser/custom_qg_model_v4.pt:/app/custom_qg_model_v4.pt'" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.service_choice }}" == "qa_service" ]]; then
             echo "SERVICE_PORT=8002" >> $GITHUB_ENV
-            echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
+            echo "SERVICE_VOLUME='/home/azureuser/QA_Model:/host_data'" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.service_choice }}" == "da_service" ]]; then
             echo "SERVICE_PORT=8003" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.service_choice }}" == "fluency_service" ]]; then
             echo "SERVICE_PORT=8004" >> $GITHUB_ENV
-            echo "SERVICE_VOLUME='/home/azureuser:/host_data'" >> $GITHUB_ENV
+            echo "SERVICE_VOLUME='/home/azureuser/fluency_models:/host_data'" >> $GITHUB_ENV
           elif [[ "${{ github.event.inputs.service_choice }}" == "img_gen_service" ]]; then
             echo "SERVICE_PORT=6000" >> $GITHUB_ENV
-            echo "SERVICE_VOLUME='/home/azureuser/imgModels:/host_data'" >> $GITHUB_ENV
+            echo "SERVICE_VOLUME='/home/azureuser/models:/app/models'" >> $GITHUB_ENV
           fi
 
       # Step 4: Deploy the selected service to Azure VM

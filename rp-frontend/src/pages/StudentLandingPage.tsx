@@ -18,6 +18,12 @@ const StudentLandingPage = () => {
     // Optional delay
     setTimeout(() => navigate(path), 350);
   };
+
+  const handleRedirect = () => {
+    const storedUsername = localStorage.getItem("username") || "Student"
+    // Pass username as URL parameter
+    window.location.href = http://20.193.146.113:3000/?username=${encodeURIComponent(storedUsername)}
+  }
   return (
     <div className="flex flex-col h-screen transparent">
       {/* Fixed Header */}
@@ -64,10 +70,12 @@ const StudentLandingPage = () => {
             </button>
           </div>
           <div className="w-full flex items-center justify-center bg-white/30 backdrop-blur-lg border border-white/40 p-2 pt-8 pb-4 rounded-lg shadow-lg">
-            <Card
-              className="max-w-xs text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-extrabold rounded-lg text-2xl tracking-wide px-5 py-2.5 text-center me-2 mb-2 transform transition-transform hover:scale-105 active:scale-95"
-              title="Play & Level Up!"
-            />
+            <div onClick={handleRedirect} className="cursor-pointer">
+              <Card
+                className="max-w-xs text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-extrabold rounded-lg text-2xl tracking-wide px-5 py-2.5 text-center me-2 mb-2 transform transition-transform hover:scale-105 active:scale-95"
+                title="Play & Level Up!"
+              />
+            </div>
           </div>
           <div className="w-full flex items-center justify-center bg-white/30 backdrop-blur-lg border border-white/40 p-2 pt-8 pb-4 rounded-lg shadow-lg">
             <button onClick={() => handleMainClick("/imageDesc")}>

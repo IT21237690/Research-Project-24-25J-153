@@ -50,5 +50,5 @@ jobs:
           docker pull ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
           docker stop react-app || true
           docker rm react-app || true
-          docker run -d --name react-app --network my_docker_network --restart always -p 80:3000 ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
+          docker run -d --name react-app --network my_docker_network --restart always -p 443:3000 ${{ secrets.ACR_REGISTRY_URL }}/react-app:latest
         EOF

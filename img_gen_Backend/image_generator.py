@@ -9,7 +9,7 @@ class ImageGenerator:
             revision="fp16",
             torch_dtype=torch.float16,
             use_auth_token=auth_token,
-            cache_dir="host_data/diffusion_cache"
+            cache_dir="models/diffusion_cache"
         ).to("cuda" if torch.cuda.is_available() else "cpu")
         
     def generate(self, prompt):

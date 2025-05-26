@@ -114,5 +114,11 @@ def final_score():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Health check API to verify server is running
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "Server is running!"}), 200
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=6000, debug=True)

@@ -12,7 +12,7 @@ auth_bp = Blueprint('auth', __name__)
 from flask_cors import cross_origin
 
 # Access MongoDB from main app
-mongo_uri = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/object_recognition_game')
+mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://dbuser:dbuser123@researchproject.ojxgd.mongodb.net/object_recognition_game?retryWrites=true&w=majority&appName=ResearchProject')
 client = pymongo.MongoClient(mongo_uri)
 db = client.get_database()
 

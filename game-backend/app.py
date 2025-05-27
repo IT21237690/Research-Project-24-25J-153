@@ -23,7 +23,7 @@ app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=24)
 jwt = JWTManager(app)
 
 # Connect to MongoDB
-mongo_uri = os.environ.get('MONGO_URI', 'mongodb://localhost:27017/object_recognition_game')
+mongo_uri = os.environ.get('MONGO_URI', 'mongodb+srv://dbuser:dbuser123@researchproject.ojxgd.mongodb.net/object_recognition_game?retryWrites=true&w=majority&appName=ResearchProject')
 client = pymongo.MongoClient(mongo_uri)
 db = client.get_database()
 
@@ -32,7 +32,7 @@ image_generator = ImageGenerator()
 
 # Routes
 from routes.auth import auth_bp
-from routes.game import game_bp
+from routes.game import game_bp 
 from routes.images import images_bp
 
 app.register_blueprint(auth_bp, url_prefix='/api/auth')

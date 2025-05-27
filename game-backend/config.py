@@ -13,7 +13,7 @@ class Config:
     TESTING = False
 
     # MongoDB settings
-    MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/object_recognition_game')
+    MONGO_URI = os.getenv('MONGO_URI', 'mongodb+srv://dbuser:dbuser123@researchproject.ojxgd.mongodb.net/object_recognition_game?retryWrites=true&w=majority&appName=ResearchProject')
 
     # API keys
     STABILITY_API_KEY = os.getenv('STABILITY_API_KEY', '')

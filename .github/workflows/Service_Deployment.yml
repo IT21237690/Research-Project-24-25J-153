@@ -16,6 +16,7 @@ on:
           - img_gen_service
           - kids_tube_be
           - kids_tube_ml
+          - game_be
 
 jobs:
   setup_vm:
@@ -109,6 +110,9 @@ jobs:
           elif [[ "${{ github.event.inputs.service_choice }}" == "kids_tube_ml" ]]; then
             echo "SERVICE_PORT=5001" >> $GITHUB_ENV
             echo "SERVICE_VOLUME='/home/azureuser/custom_qg_model_v4.pt:/host_data'" >> $GITHUB_ENV
+          elif [[ "${{ github.event.inputs.service_choice }}" == "game_be" ]]; then
+            echo "SERVICE_PORT=5002" >> $GITHUB_ENV
+            echo "SERVICE_VOLUME='/home/azureuser/best_model.pt:/host_data/best_model.pt'" >> $GITHUB_ENV
           fi
 
       # Step 4: Deploy the selected service to Azure VM

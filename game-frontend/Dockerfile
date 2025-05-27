@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Step 5: Expose the port React uses by default
-EXPOSE 3000
+EXPOSE 3001
 
 # Step 6: Start the React development server
 CMD ["npm", "start"]

@@ -56,7 +56,7 @@ const Lobby: React.FC = () => {
 
   const handlePlayImageExplorer = () => {
     const usernameParam = encodeURIComponent(username)
-    window.location.href = `http://localhost:3000/?username=${usernameParam}`
+    window.location.href = `http://20.193.146.113:3000/?username=${usernameParam}`
   }
 
   return (

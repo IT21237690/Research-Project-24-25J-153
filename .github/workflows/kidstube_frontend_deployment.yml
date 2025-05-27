@@ -1,0 +1,54 @@
+name: Deployment for KidsTube_Frontend
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_REGISTRY_URL }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build Docker image
+      run: |
+        docker build -t ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest ./Kids-Tube-Frontend
+
+    - name: Push Docker image to Azure Container Registry
+      run: |
+        docker push ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH agent
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.VM_KEY }}
+
+    - name: SSH into Azure VM and Deploy Docker Container
+      run: |
+        ssh -o StrictHostKeyChecking=no azureuser@${{ secrets.VM_HOST }} << EOF
+        # Remove old Docker image if it exists
+          docker rmi -f ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest || true
+          docker pull ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest
+          docker stop kidstube_fe || true
+          docker rm kidstube_fe || true
+          docker run -d --name kidstube_fe --network my_docker_network --restart always -p 3000:3000 ${{ secrets.ACR_REGISTRY_URL }}/kidstube_fe:latest
+        EOF
